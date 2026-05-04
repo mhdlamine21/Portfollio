@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="60" fill="#D33833"/>
+  <!-- Chapeau / Cheveux -->
+  <path fill="#2E2E2E" d="M36 48c0-12 12-22 28-22s28 10 28 22c0 2-1 4-3 5-10-4-23-4-32 0-14 6-18-2-21-5z"/>
+  <!-- Visage -->
+  <path fill="#F9D2B5" d="M38 52c0 14 11 25 26 25s26-11 26-25c0-1-1-2-2-3-12-3-24-3-36 0-9 2-14 2-14 3z"/>
+  <!-- Yeux et sourcils -->
+  <circle cx="54" cy="54" r="3" fill="#2E2E2E"/>
+  <circle cx="74" cy="54" r="3" fill="#2E2E2E"/>
+  <!-- Moustache blanche -->
+  <path fill="#FFFFFF" d="M48 64c5-3 10-1 16 2 6-3 11-5 16-2 3 2 1 5-4 4-6-1-10 1-12 3-2-2-6-4-12-3-5 1-7-2-4-4z"/>
+  <!-- Corps / Costume -->
+  <path fill="#2E2E2E" d="M36 78c-8 12-10 28-10 38h76c0-10-2-26-10-38-8-5-18-8-28-8s-20 3-28 8z"/>
+  <!-- Chemise blanche et noeud papillon rouge -->
+  <path fill="#FFFFFF" d="M56 76l8 12 8-12h-16z"/>
+  <path fill="#D33833" d="M60 84l4 3 4-3-1 6-3-2-3 2z"/>
+</svg>

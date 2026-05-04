@@ -1,0 +1,3 @@
+# Ignorer les plans de travail locaux
+plan_de_commit.md
+*.tmp
