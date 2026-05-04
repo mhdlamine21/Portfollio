@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="fr" data-theme="clair">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouhamadou Lamine Niang — Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Mouhamadou Lamine Niang, étudiant en Génie Logiciel à l'Université Iba Der Thiam de Thiès."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Orbes animés arrière-plan -->
+    <div class="orbe orbe_un" aria-hidden="true"></div>
+    <div class="orbe orbe_deux" aria-hidden="true"></div>
+    <!-- Lueur curseur souris -->
+    <div class="curseur_lueur" id="curseur_lueur" aria-hidden="true"></div>
+
+    <!-- NAVIGATION -->
+    <header id="entete" role="banner">
+      <nav class="barre_navigation" aria-label="Navigation principale">
+        <a href="#accueil" class="logo" aria-label="Accueil">&lt;Dev /&gt;</a>
+
+        <ul class="liens_navigation" role="list">
+          <li><a href="#accueil" class="lien_nav">Accueil</a></li>
+          <li><a href="#apropos" class="lien_nav">À propos</a></li>
+          <li><a href="#competences" class="lien_nav">Compétences</a></li>
+          <li><a href="#projets" class="lien_nav">Projets</a></li>
+          <li><a href="#contact" class="lien_nav">Contact</a></li>
+        </ul>
+
+        <div class="nav_actions">
+          <button
+            class="bouton_theme"
+            id="bouton_theme"
+            onclick="basculer_theme()"
+            aria-label="Changer le thème"
+          >
+            <svg
+              class="icone_soleil"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg
+              class="icone_lune"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="bouton_menu"
+            id="bouton_menu"
+            onclick="gerer_menu_mobile()"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <span class="ligne_menu"></span>
+            <span class="ligne_menu"></span>
+            <span class="ligne_menu"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="menu_mobile" id="menu_mobile" aria-hidden="true">
+        <ul role="list">
+          <li><a href="#accueil" class="lien_mobile">Accueil</a></li>
+          <li><a href="#apropos" class="lien_mobile">À propos</a></li>
+          <li><a href="#competences" class="lien_mobile">Compétences</a></li>
+          <li><a href="#projets" class="lien_mobile">Projets</a></li>
+          <li><a href="#contact" class="lien_mobile">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="accueil" class="section_hero" aria-label="Présentation">
+        <div class="hero_contenu">
+          <div class="badge_disponible apparition" style="--delai: 0s">
+            <span class="point_ping"></span>Disponible pour un stage
+          </div>
+
+          <p class="hero_bonjour apparition" style="--delai: 0.15s">
+            Bonjour, je suis
+          </p>
+
+          <h1 class="hero_nom apparition" style="--delai: 0.3s">
+            Mouhamadou <span class="nom_suite">Lamine Niang</span>
+          </h1>
+
+          <p class="hero_role apparition" style="--delai: 0.45s">
+            Étudiant en
+            <span class="role_accent" id="texte_anime">Génie Logiciel</span>
+          </p>
+
+          <p class="hero_universite apparition" style="--delai: 0.55s">
+            Université Iba Der Thiam de Thiès 🇸🇳
+          </p>
+
+          <p class="hero_bio apparition" style="--delai: 0.65s">
+            Passionné d'ingénierie logicielle et de systèmes d'information
+            depuis mes premières lignes de code, je m'intéresse à la conception
+            de solutions numériques robustes et utiles. Je souhaite contribuer
+            au développement technologique du Sénégal et de l'Afrique à travers
+            des projets concrets.
+          </p>
+
+          <div class="hero_boutons apparition" style="--delai: 0.75s">
+            <a
+              href="/documents/CV/Mon cv.pdf"
+              download
+              class="bouton_principal"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Télécharger CV <a href="/documents/CV/Mon cv.pdf" download>ici</a>
+            </a>
+            <a href="#contact" class="bouton_secondaire">Me contacter</a>
+          </div>
+
+          <div class="hero_reseaux apparition" style="--delai: 0.9s">
+            <a
+              href="https://github.com/mhdlamine21"
+              target="_blank"
+              rel="noopener"
+              class="lien_reseau"
+              aria-label="GitHub"
+            >
+              <img
+                src="images/icons/github.svg"
+                alt="GitHub"
+                width="20"
+                height="20"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
+              target="_blank"
+              rel="noopener"
+              class="lien_reseau"
+              aria-label="LinkedIn"
+            >
+              <img
+                src="images/icons/linkedin.svg"
+                alt="LinkedIn"
+                width="20"
+                height="20"
+              />
+            </a>
+          </div>
+
+          <div
+            class="indicateur_scroll apparition"
+            style="--delai: 1.1s"
+            aria-hidden="true"
+          >
+            <div class="souris_scroll"><div class="point_scroll"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- À PROPOS -->
+      <section id="apropos" class="section_apropos" aria-label="À propos">
+        <div class="conteneur">
+          <div class="titre_section reveler">
+            <span class="etiquette_section">01 — À propos</span>
+            <h2>À propos <span class="accent_titre">de moi</span></h2>
+          </div>
+          <div class="grille_apropos">
+            <div class="carte_profil reveler-gauche">
+              <div class="avatar_cercle">
+                <img src="/images/profil.jpg" alt="Mouhamadou Lamine Niang" />
+              </div>
+              <h3 class="profil_nom">Mouhamadou Lamine Niang</h3>
+              <p class="profil_role">Étudiant en Génie Logiciel</p>
+              <div class="profil_badges">
+                <span class="badge_competence">Génie Logiciel</span>
+                <span class="badge_competence">Analyse</span>
+                <span class="badge_competence">Conception</span>
+              </div>
+            </div>
+            <div class="texte_apropos reveler-droite">
+              <p>
+                Je suis étudiant en
+                <a
+                  href="http://www.univ-thies.sn"
+                  target="_blank"
+                  class="lien_accent"
+                  >3ᵉ année de licence Informatique</a
+                >
+                ,option <strong>Génie Logiciel</strong>, à l'Université Iba Der
+                Thiam de Thiès.
+              </p>
+              <p>
+                Mon parcours m'a permis de développer des compétences solides en
+                programmation orientée objet, en bases de données
+                relationnelles, en systèmes d'information et en développement
+                web. J'explore également le développement mobile et les
+                architectures logicielles dans le cadre de mes projets
+                académiques et personnels.
+              </p>
+              <p>
+                Je crois que la technologie peut transformer l'Afrique, et je
+                souhaite y contribuer à travers des solutions logicielles
+                robustes et bien conçues.
+              </p>
+              <p>
+                Fondateur de <strong>CodeZoneSN</strong>, un blog pour les
+                étudiants en informatique au Sénégal.
+              </p>
+              <p>
+                Mon objectif : renforcer mes compétences techniques à travers
+                des projets concrets et m'orienter vers l'ingénierie logicielle
+                avancée.
+              </p>
+              <div class="stats_rangee">
+                <div class="carte_stat">
+                  <span class="stat_chiffre" data-cible="3">0+</span
+                  ><span class="stat_label">Projets</span>
+                </div>
+                <div class="carte_stat">
+                  <span class="stat_chiffre" data-cible="10">0+</span
+                  ><span class="stat_label">Technologies</span>
+                </div>
+                <div class="carte_stat">
+                  <span class="stat_chiffre" data-cible="2">0+</span
+                  ><span class="stat_label">Ans d'apprentissage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPÉTENCES avec filtres par domaine -->
+      <section
+        id="competences"
+        class="section_competences"
+        aria-label="Compétences"
+      >
+        <div class="conteneur">
+          <div class="titre_section reveler">
+            <span class="etiquette_section">02 — Compétences</span>
+            <h2>Mes <span class="accent_titre">compétences</span></h2>
+          </div>
+
+          <!-- Filtres domaine -->
+          <div
+            class="filtres_domaine reveler"
+            role="tablist"
+            aria-label="Filtrer par domaine"
+          >
+            <button
+              class="filtre_btn actif_filtre"
+              data-domaine="tous"
+              role="tab"
+              aria-selected="true"
+            >
+              Tous
+            </button>
+            <button
+              class="filtre_btn"
+              data-domaine="frontend"
+              role="tab"
+              aria-selected="false"
+            >
+              Front-end
+            </button>
+            <button
+              class="filtre_btn"
+              data-domaine="backend"
+              role="tab"
+              aria-selected="false"
+            >
+              Back-end
+            </button>
+            <button
+              class="filtre_btn"
+              data-domaine="bdd"
+              role="tab"
+              aria-selected="false"
+            >
+              Bases de données
+            </button>
+            <button
+              class="filtre_btn"
+              data-domaine="devops"
+              role="tab"
+              aria-selected="false"
+            >
+              DevOps & Outils
+            </button>
+            <button
+              class="filtre_btn"
+              data-domaine="mobile"
+              role="tab"
+              aria-selected="false"
+            >
+              Mobile
+            </button>
+          </div>
+
+          <div class="grille_competences" id="grille_competences">
+            <!-- FRONT-END -->
+            <div
+              class="carte_competence comp_html reveler"
+              data-domaine="frontend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_orange">
+                <img
+                  src="images/icons/html.svg"
+                  alt="HTML"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">HTML5</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_orange"
+                  data-niveau="90"
+                ></div>
+              </div>
+              <p class="competence_pct">90% — Front-end</p>
+            </div>
+
+            <div
+              class="carte_competence comp_css reveler"
+              data-domaine="frontend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_bleu">
+                <img
+                  src="images/icons/css.svg"
+                  alt="CSS"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">CSS3</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_bleu"
+                  data-niveau="85"
+                ></div>
+              </div>
+              <p class="competence_pct">85% — Front-end</p>
+            </div>
+
+            <div
+              class="carte_competence comp_js reveler"
+              data-domaine="frontend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_jaune">
+                <img
+                  src="images/icons/javascript.svg"
+                  alt="JavaScript"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">JavaScript</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_jaune"
+                  data-niveau="85"
+                ></div>
+              </div>
+              <p class="competence_pct">85% — Front-end</p>
+            </div>
+
+            <!-- BACK-END -->
+
+            <div
+              class="carte_competence comp_php reveler"
+              data-domaine="backend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_violet">
+                <img
+                  src="images/icons/php.svg"
+                  alt="PHP"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">PHP</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_violet"
+                  data-niveau="70"
+                ></div>
+              </div>
+              <p class="competence_pct">70% — Back-end</p>
+            </div>
+
+            <div
+              class="carte_competence comp_python reveler"
+              data-domaine="backend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_bleu_py">
+                <img
+                  src="images/icons/python.svg"
+                  alt="Python"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Python</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_bleu_py"
+                  data-niveau="72"
+                ></div>
+              </div>
+              <p class="competence_pct">72% — Back-end</p>
+            </div>
+
+            <div
+              class="carte_competence comp_java reveler"
+              data-domaine="backend"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_orange_java">
+                <img
+                  src="images/icons/java.svg"
+                  alt="Java"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Java</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_orange_java"
+                  data-niveau="68"
+                ></div>
+              </div>
+              <p class="competence_pct">68% — Back-end</p>
+            </div>
+
+            <!-- BASES DE DONNÉES -->
+            <div class="carte_competence comp_sql reveler" data-domaine="bdd">
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_bleu_sql">
+                <img
+                  src="images/icons/sql.svg"
+                  alt="SQL"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">SQL</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_bleu_sql"
+                  data-niveau="80"
+                ></div>
+              </div>
+              <p class="competence_pct">80% — Bases de données</p>
+            </div>
+
+            <div class="carte_competence comp_mysql reveler" data-domaine="bdd">
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_bleu_mysql">
+                <img
+                  src="images/icons/mysql.svg"
+                  alt="MySQL"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">MySQL</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_bleu_mysql"
+                  data-niveau="78"
+                ></div>
+              </div>
+              <p class="competence_pct">78% — Bases de données</p>
+            </div>
+
+            <!-- DEVOPS & OUTILS -->
+            <div
+              class="carte_competence comp_git reveler"
+              data-domaine="devops"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_rouge_git">
+                <img
+                  src="images/icons/git.svg"
+                  alt="Git"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Git</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_rouge_git"
+                  data-niveau="82"
+                ></div>
+              </div>
+              <p class="competence_pct">82% — DevOps</p>
+            </div>
+
+            <div
+              class="carte_competence comp_figma reveler"
+              data-domaine="devops"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_figma">
+                <img
+                  src="images/icons/figma.svg"
+                  alt="Figma"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Figma</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_figma"
+                  data-niveau="65"
+                ></div>
+              </div>
+              <p class="competence_pct">65% — Design</p>
+            </div>
+
+            <!-- MOBILE -->
+            <div
+              class="carte_competence comp_flutter reveler"
+              data-domaine="mobile"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_cyan_flutter">
+                <img
+                  src="images/icons/flutter.svg"
+                  alt="Flutter"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Flutter</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_cyan_flutter"
+                  data-niveau="65"
+                ></div>
+              </div>
+              <p class="competence_pct">65% — Mobile</p>
+            </div>
+
+            <div
+              class="carte_competence comp_dart reveler"
+              data-domaine="mobile"
+            >
+              <div class="particule_flottante"></div>
+              <div class="competence_icone icone_bleu_dart">
+                <img
+                  src="images/icons/dart.svg"
+                  alt="Dart"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <p class="competence_nom">Dart</p>
+              <div class="barre_fond">
+                <div
+                  class="barre_remplissage barre_bleu_dart"
+                  data-niveau="60"
+                ></div>
+              </div>
+              <p class="competence_pct">60% — Mobile</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJETS - Section simplifiée -->
+      <section id="projets" class="section_projets" aria-label="Projets">
+        <div class="conteneur">
+          <div class="titre_section reveler">
+            <span class="etiquette_section">03 — Projets</span>
+            <h2>Projets <span class="accent_titre">réalisés</span></h2>
+          </div>
+
+          <div class="grille_projets" id="grille_projets">
+            <!-- Projet 1: VoteNow -->
+            <article class="carte_projet projet_deux reveler">
+              <div class="barre_projet"></div>
+              <div class="projet_entete">
+                <div class="projet_badge badge_deux">01</div>
+                <div class="projet_logo">
+                  <img src="images/projects/votenow.svg" alt="VoteNow" />
+                </div>
+              </div>
+              <h3 class="projet_titre">VoteNow</h3>
+              <p class="projet_description">
+                Application de vote universitaire avec API REST complète,
+                sécurisation anti-fraude, documentation Swagger et déploiement
+                Docker.
+              </p>
+              <div class="projet_technologies">
+                <span class="tech_etiquette">Node.js</span>
+                <span class="tech_etiquette">Express</span>
+                <span class="tech_etiquette">JWT</span>
+                <span class="tech_etiquette">Swagger</span>
+              </div>
+              <a
+                href="https://github.com/mhdlamine21/votenow"
+                target="_blank"
+                rel="noopener"
+                class="projet_lien"
+              >
+                Voir le projet
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </article>
+
+            <!-- Projet 2: Univ-Scheduler -->
+            <article class="carte_projet projet_cinq reveler">
+              <div class="barre_projet"></div>
+              <div class="projet_entete">
+                <div class="projet_badge badge_cinq">02</div>
+                <div class="projet_logo">
+                  <img
+                    src="images/projects/univ-scheduler.svg"
+                    alt="Univ-Scheduler"
+                  />
+                </div>
+              </div>
+              <h3 class="projet_titre">Univ-Scheduler</h3>
+              <p class="projet_description">
+                Application de gestion des emplois du temps universitaires.
+                Interface JavaFX avec génération automatique des plannings et
+                gestion des conflits de salles.
+              </p>
+              <div class="projet_technologies">
+                <span class="tech_etiquette">Java</span>
+                <span class="tech_etiquette">JavaFX</span>
+                <span class="tech_etiquette">MySQL</span>
+                <span class="tech_etiquette">JDBC</span>
+              </div>
+              <a
+                href="https://github.com/mhdlamine21/univ-scheduler"
+                target="_blank"
+                rel="noopener"
+                class="projet_lien"
+              >
+                Voir le projet
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </article>
+
+            <!-- Projet 3: CodeZoneSN -->
+            <article class="carte_projet projet_un reveler">
+              <div class="barre_projet"></div>
+              <div class="projet_entete">
+                <div class="projet_badge badge_un">03</div>
+                <div class="projet_logo">
+                  <img src="images/projects/codezone.svg" alt="CodeZoneSN" />
+                </div>
+              </div>
+              <h3 class="projet_titre">CodeZoneSN</h3>
+              <p class="projet_description">
+                Blog fullstack pour étudiants en informatique au Sénégal. CMS
+                headless avec interface admin, authentification JWT et cache
+                Redis.
+              </p>
+              <div class="projet_technologies">
+                <span class="tech_etiquette">React</span>
+                <span class="tech_etiquette">Node.js</span>
+                <span class="tech_etiquette">PostgreSQL</span>
+                <span class="tech_etiquette">Redis</span>
+              </div>
+              <a
+                href="https://github.com/mhdlamine21/codezone"
+                target="_blank"
+                rel="noopener"
+                class="projet_lien"
+              >
+                Voir le projet
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </article>
+          </div>
+
+          <div class="voir_tout reveler">
+            <a
+              href="https://github.com/mhdlamine21"
+              target="_blank"
+              rel="noopener"
+              class="bouton_voir_tout"
+            >
+              Voir tous mes projets sur GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section_contact" aria-label="Contact">
+        <div class="conteneur">
+          <div class="titre_section reveler">
+            <span class="etiquette_section">04 — Contact</span>
+            <h2>Travaillons <span class="accent_titre">ensemble</span></h2>
+          </div>
+          <div class="grille_contact">
+            <div class="contact_infos reveler-gauche">
+              <h3 class="contact_sous_titre">Prenons contact</h3>
+              <p class="contact_description">
+                Je suis disponible pour un stage, une collaboration ou
+                simplement un échange sur la tech. N'hésitez pas !
+              </p>
+              <div class="contact_elements">
+                <a
+                  href="mailto:mouhamedlniang@gmail.com"
+                  class="element_contact"
+                >
+                  <div class="icone_contact fond_bleu">
+                    <img
+                      src="images/icons/email.svg"
+                      alt="Email"
+                      width="20"
+                      height="20"
+                    />
+                  </div>
+                  <div>
+                    <p class="element_label">Email</p>
+                    <p class="element_valeur">mouhamedlniang@gmail.com</p>
+                  </div>
+                </a>
+                <a
+                  href="https://github.com/mhdlamine21"
+                  target="_blank"
+                  rel="noopener"
+                  class="element_contact"
+                >
+                  <div class="icone_contact fond_rose">
+                    <img
+                      src="images/icons/github.svg"
+                      alt="GitHub"
+                      width="20"
+                      height="20"
+                    />
+                  </div>
+                  <div>
+                    <p class="element_label">GitHub</p>
+                    <p class="element_valeur">github.com/mhdlamine21</p>
+                  </div>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
+                  target="_blank"
+                  rel="noopener"
+                  class="element_contact"
+                >
+                  <div class="icone_contact fond_bleu_fonce">
+                    <img
+                      src="images/icons/linkedin.svg"
+                      alt="LinkedIn"
+                      width="20"
+                      height="20"
+                    />
+                  </div>
+                  <div>
+                    <p class="element_label">LinkedIn</p>
+                    <p class="element_valeur">
+                      linkedin.com/in/mouhamadou-lamine-niang
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <p class="suivre_label">Me suivre</p>
+              <div class="reseaux_sociaux">
+                <a
+                  href="https://github.com/mhdlamine21"
+                  target="_blank"
+                  rel="noopener"
+                  class="icone_social"
+                  aria-label="GitHub"
+                  ><img
+                    src="images/icons/github.svg"
+                    alt="GitHub"
+                    width="20"
+                    height="20"
+                /></a>
+                <a
+                  href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
+                  target="_blank"
+                  rel="noopener"
+                  class="icone_social"
+                  aria-label="LinkedIn"
+                  ><img
+                    src="images/icons/linkedin.svg"
+                    alt="LinkedIn"
+                    width="20"
+                    height="20"
+                /></a>
+              </div>
+            </div>
+
+            <div class="carte_formulaire reveler-droite">
+              <form id="formulaire_contact" class="formulaire" novalidate>
+                <div class="champ_groupe">
+                  <label for="champ_nom" class="etiquette_champ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Nom complet
+                  </label>
+                  <input
+                    type="text"
+                    id="champ_nom"
+                    name="nom"
+                    class="saisie_texte"
+                    placeholder="Votre nom complet"
+                    required
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="champ_groupe">
+                  <label for="champ_email" class="etiquette_champ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Adresse email
+                  </label>
+                  <input
+                    type="email"
+                    id="champ_email"
+                    name="email"
+                    class="saisie_texte"
+                    placeholder="votre@email.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="champ_groupe">
+                  <label for="champ_objet" class="etiquette_champ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="4" y1="9" x2="20" y2="9" />
+                      <line x1="4" y1="15" x2="20" y2="15" />
+                      <line x1="10" y1="3" x2="8" y2="21" />
+                      <line x1="16" y1="3" x2="14" y2="21" />
+                    </svg>
+                    Objet
+                  </label>
+                  <input
+                    type="text"
+                    id="champ_objet"
+                    name="objet"
+                    class="saisie_texte"
+                    placeholder="Stage, collaboration, question..."
+                    required
+                  />
+                </div>
+                <div class="champ_groupe">
+                  <label for="champ_message" class="etiquette_champ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
+                    Message
+                  </label>
+                  <textarea
+                    id="champ_message"
+                    name="message"
+                    class="saisie_texte saisie_textarea"
+                    placeholder="Dites-moi ce que vous avez en tête..."
+                    required
+                    rows="5"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="bouton_envoyer"
+                  id="bouton_envoyer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                  Envoyer le message
+                </button>
+                <p
+                  class="message_succes"
+                  id="message_succes"
+                  role="alert"
+                  aria-live="polite"
+                >
+                  ✅ Message envoyé ! Je vous répondrai bientôt.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pied_page" role="contentinfo">
+      <div class="conteneur pied_interieur">
+        <span class="pied_logo">&lt;Dev /&gt;</span>
+        <p class="pied_copyright">
+          © 2026 Mouhamadou Lamine Niang — Software Developer 🇸🇳
+        </p>
+        <div class="pied_reseaux">
+          <a
+            href="https://github.com/mhdlamine21"
+            target="_blank"
+            rel="noopener"
+            class="pied_icone"
+            aria-label="GitHub"
+            ><img
+              src="images/icons/github.svg"
+              alt="GitHub"
+              width="18"
+              height="18"
+          /></a>
+          <a
+            href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
+            target="_blank"
+            rel="noopener"
+            class="pied_icone"
+            aria-label="LinkedIn"
+            ><img
+              src="images/icons/linkedin.svg"
+              alt="LinkedIn"
+              width="18"
+              height="18"
+          /></a>
+        </div>
+      </div>
+    </footer>
+
+    <button class="bouton_haut" id="bouton_haut" aria-label="Retourner en haut">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
