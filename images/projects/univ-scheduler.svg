@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 285 720 395" width="720" height="395" role="img" aria-label="Univ-Scheduler logo"
+     data-theme="auto" data-monochrome="false">
+  <title>Univ-Scheduler</title>
+  <desc>Logo vectoriel Univ-Scheduler recoloré dans une palette marron, beige et dorée. Sans image incorporée.</desc>
+    <style>
+    .uv-dark { fill: #4B2E1E; }
+    .uv-brown { fill: #7B4C2C; }
+    .uv-copper { fill: #A5673B; }
+    .uv-beige { fill: #D7B88A; }
+    .uv-gold { fill: #D39A43; }
+    .uv-cream { fill: #F4E7D4; }
+    .uv-light { fill: #E8D4B8; }
+    .uv-cream-stroke { stroke: #F4E7D4; }
+    svg[data-theme="dark"] .uv-dark { fill: #F1E2CD; }
+    svg[data-theme="dark"] .uv-brown { fill: #D2A673; }
+    svg[data-theme="dark"] .uv-copper { fill: #C8874F; }
+    svg[data-theme="dark"] .uv-beige { fill: #B98A59; }
+    svg[data-theme="dark"] .uv-gold { fill: #E2B35B; }
+    svg[data-theme="dark"] .uv-cream { fill: #4B2E1E; }
+    svg[data-theme="dark"] .uv-light { fill: #6A442B; }
+    svg[data-theme="dark"] .uv-cream-stroke { stroke: #4B2E1E; }
+    @media (prefers-color-scheme: dark) {
+      svg[data-theme="auto"] .uv-dark { fill: #F1E2CD; }
+      svg[data-theme="auto"] .uv-brown { fill: #D2A673; }
+      svg[data-theme="auto"] .uv-copper { fill: #C8874F; }
+      svg[data-theme="auto"] .uv-beige { fill: #B98A59; }
+      svg[data-theme="auto"] .uv-gold { fill: #E2B35B; }
+      svg[data-theme="auto"] .uv-cream { fill: #4B2E1E; }
+      svg[data-theme="auto"] .uv-light { fill: #6A442B; }
+      svg[data-theme="auto"] .uv-cream-stroke { stroke: #4B2E1E; }
+    }
+    svg[data-monochrome="true"] .uv-dark,
+    svg[data-monochrome="true"] .uv-brown,
+    svg[data-monochrome="true"] .uv-copper,
+    svg[data-monochrome="true"] .uv-beige,
+    svg[data-monochrome="true"] .uv-gold,
+    svg[data-monochrome="true"] .uv-cream,
+    svg[data-monochrome="true"] .uv-light {
+      fill: currentColor;
+    }
+    svg[data-monochrome="true"] .uv-cream-stroke { stroke: currentColor; }
+  </style>
+
+  <defs>
+    <linearGradient id="warmHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7B4C2C"/>
+      <stop offset="55%" stop-color="#A5673B"/>
+      <stop offset="100%" stop-color="#D39A43"/>
+    </linearGradient>
+    <linearGradient id="warmAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D39A43"/>
+      <stop offset="55%" stop-color="#A5673B"/>
+      <stop offset="100%" stop-color="#D7B88A"/>
+    </linearGradient>
+    <linearGradient id="warmCell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D7B88A"/>
+      <stop offset="100%" stop-color="#E8D4B8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wordmark: extracted as vector paths from the supplied artwork -->
+  <g id="wordmark" fill="#4B2E1E" fill-rule="evenodd">
+    <path class="uv-dark" fill="#4B2E1E" d="M 463 494 L 463 508 L 466 510 L 501 510 L 504 508 L 504 494 L 503 493 L 464 493 Z M 391 468 L 393 478 L 418 539 L 433 539 L 435 538 L 462 470 L 460 467 L 445 467 L 442 470 L 437 487 L 435 490 L 426 516 L 424 514 L 409 469 L 407 467 L 393 467 Z M 368 467 L 365 469 L 365 537 L 368 539 L 381 539 L 383 537 L 383 468 L 381 467 Z M 341 470 L 331 466 L 320 466 L 312 469 L 306 474 L 305 473 L 306 471 L 305 468 L 303 467 L 288 468 L 287 470 L 287 536 L 288 538 L 290 539 L 303 539 L 305 538 L 306 536 L 306 494 L 309 488 L 317 483 L 324 483 L 328 485 L 333 492 L 333 517 L 334 518 L 333 536 L 336 539 L 349 539 L 351 538 L 352 536 L 352 490 L 351 489 L 351 484 L 348 477 Z M 196 440 L 196 507 L 200 520 L 209 531 L 217 536 L 226 539 L 244 539 L 257 534 L 268 523 L 272 515 L 274 506 L 274 440 L 271 438 L 263 438 L 262 439 L 260 438 L 255 440 L 255 503 L 252 512 L 246 518 L 239 521 L 231 521 L 224 518 L 219 513 L 215 504 L 215 440 L 211 438 L 199 438 Z M 370 434 L 363 441 L 363 449 L 370 456 L 379 456 L 384 452 L 386 448 L 386 442 L 381 435 L 379 434 Z "/>
+    <path class="uv-dark" fill="#4B2E1E" d="M 583 584 L 582 585 L 582 636 L 587 647 L 594 653 L 605 657 L 617 656 L 622 654 L 627 650 L 629 655 L 645 655 L 646 654 L 646 585 L 644 584 L 629 584 L 628 585 L 628 626 L 627 631 L 620 639 L 612 641 L 605 638 L 600 631 L 600 587 L 598 584 Z M 811 583 L 803 583 L 796 585 L 788 592 L 786 584 L 770 584 L 769 585 L 769 654 L 770 655 L 786 655 L 787 654 L 787 615 L 791 607 L 796 603 L 812 600 L 813 585 Z M 717 583 L 704 588 L 694 598 L 688 613 L 688 627 L 692 639 L 697 646 L 703 651 L 715 656 L 731 657 L 739 655 L 747 651 L 755 642 L 744 634 L 732 641 L 720 641 L 713 638 L 707 631 L 706 627 L 707 626 L 756 626 L 759 623 L 759 612 L 757 604 L 754 598 L 744 588 L 731 583 Z M 706 610 L 713 601 L 720 598 L 728 598 L 735 601 L 741 608 L 742 612 L 741 613 L 707 613 Z M 438 586 L 426 596 L 420 608 L 419 626 L 421 634 L 424 640 L 433 650 L 446 656 L 460 657 L 474 653 L 484 645 L 485 642 L 476 635 L 472 634 L 468 638 L 458 642 L 450 641 L 440 634 L 437 627 L 438 626 L 487 626 L 489 624 L 489 611 L 486 601 L 477 590 L 465 584 L 448 583 Z M 437 610 L 438 607 L 445 600 L 451 598 L 458 598 L 465 601 L 471 607 L 472 612 L 471 613 L 438 613 Z M 301 583 L 288 588 L 278 597 L 273 606 L 271 614 L 271 627 L 273 635 L 276 641 L 286 651 L 294 655 L 302 657 L 314 657 L 328 652 L 335 646 L 336 643 L 331 637 L 326 634 L 323 634 L 320 637 L 314 640 L 303 640 L 297 637 L 292 632 L 289 625 L 289 616 L 291 610 L 297 603 L 303 600 L 313 600 L 325 607 L 335 599 L 336 596 L 332 591 L 322 585 L 315 583 Z M 566 553 L 553 553 L 550 556 L 550 590 L 549 591 L 542 585 L 536 583 L 524 583 L 517 585 L 510 589 L 501 599 L 496 613 L 496 628 L 499 638 L 502 643 L 513 653 L 526 657 L 538 656 L 549 650 L 552 655 L 562 655 L 563 656 L 568 654 L 568 555 Z M 527 600 L 538 600 L 542 602 L 548 608 L 551 616 L 550 628 L 547 633 L 538 640 L 532 641 L 523 638 L 516 631 L 514 626 L 515 611 L 523 602 Z M 347 553 L 345 555 L 345 653 L 347 655 L 362 655 L 363 654 L 363 615 L 364 610 L 370 602 L 374 600 L 382 600 L 390 606 L 392 611 L 392 654 L 393 655 L 408 655 L 410 653 L 410 607 L 408 599 L 405 593 L 399 587 L 390 583 L 377 583 L 368 587 L 364 591 L 363 590 L 363 555 L 361 553 Z M 223 552 L 215 554 L 209 557 L 201 564 L 196 574 L 196 579 L 195 580 L 196 590 L 200 599 L 208 606 L 214 609 L 239 617 L 245 624 L 244 633 L 236 639 L 227 640 L 216 637 L 204 627 L 192 639 L 192 642 L 198 648 L 207 653 L 221 657 L 235 657 L 236 656 L 241 656 L 251 652 L 260 644 L 265 633 L 265 621 L 262 613 L 254 604 L 242 598 L 221 591 L 215 585 L 214 582 L 215 577 L 222 571 L 233 570 L 244 574 L 250 579 L 253 579 L 259 573 L 263 566 L 260 562 L 248 555 L 236 552 Z M 738 546 L 736 545 L 735 547 L 728 550 Z M 720 545 L 722 546 L 722 545 Z M 725 549 L 724 549 L 723 552 L 718 553 L 714 551 L 718 548 L 715 545 L 680 545 L 679 546 L 672 546 L 677 548 L 672 549 L 677 550 L 678 551 L 677 553 L 676 552 L 663 552 L 662 553 L 660 552 L 661 553 L 660 554 L 660 652 L 662 655 L 677 655 L 678 654 L 678 566 L 679 565 L 679 558 L 680 557 L 682 562 L 687 562 L 697 560 L 701 558 L 705 558 L 718 553 L 724 552 Z M 678 556 L 679 555 L 680 556 L 679 557 Z M 706 555 L 707 554 L 712 555 L 711 556 Z M 678 554 L 679 553 L 680 554 L 679 555 Z M 709 553 L 710 552 L 712 553 L 711 554 Z M 677 553 L 678 552 L 679 553 L 678 554 Z M 711 554 L 713 553 L 711 552 L 712 551 L 718 553 L 714 555 Z M 612 545 L 624 555 L 614 546 L 615 545 L 614 546 Z "/>
+  </g>
+
+  <!-- Warm accent behind the calendar -->
+  <path d="M 610 439
+           C 631 404 676 387 721 393
+           C 780 401 818 448 813 500
+           C 809 540 780 565 743 572
+           L 638 572
+           C 612 559 598 533 600 505
+           C 601 481 601 458 610 439 Z"
+        fill="url(#warmAccent)"/>
+  <path d="M 606 507 C 652 541 710 560 779 543
+           C 792 530 801 514 805 496
+           C 809 516 800 548 771 565
+           L 639 565 C 621 556 610 534 606 507 Z"
+        class="uv-copper" fill="#A5673B" opacity=".9"/>
+
+  <!-- Graduation cap -->
+  <g id="cap">
+    <path d="M 727 315 L 889 383 L 805 409 L 677 344 Z"
+          class="uv-dark" fill="#4B2E1E"/>
+    <path d="M 677 344 L 805 409 L 807 455
+             C 785 441 762 431 737 422
+             L 681 390 Z"
+          class="uv-brown" fill="#7B4C2C"/>
+    <path d="M 726 333 L 864 390 L 805 406 L 694 349 Z"
+          class="uv-copper" fill="#A5673B"/>
+    <path d="M 843 384 L 843 467" fill="none"
+          class="uv-dark" stroke="#4B2E1E" stroke-width="5"
+          stroke-linecap="round"/>
+    <circle cx="843" cy="469" r="9" class="uv-gold" fill="#D39A43"/>
+    <path d="M 843 478
+             C 838 495 835 513 826 531
+             M 843 478
+             C 844 497 847 516 853 535
+             M 843 478
+             C 840 500 839 520 837 540"
+          fill="none" class="uv-gold" stroke="#D39A43" stroke-width="4"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Calendar body -->
+  <g id="calendar">
+    <rect x="509" y="324" width="270" height="241" rx="24"
+          class="uv-cream" fill="#F4E7D4"/>
+    <path d="M 509 349
+             Q 509 324 534 324
+             L 754 324
+             Q 779 324 779 349
+             L 779 402
+             L 509 402 Z"
+          fill="url(#warmHeader)"/>
+    <path d="M 509 402 H 779" class="uv-light" stroke="#E8D4B8" stroke-width="7"/>
+    <!-- binder rings -->
+    <g class="uv-dark" fill="#4B2E1E" stroke="#F4E7D4" stroke-width="7">
+      <rect x="550" y="294" width="34" height="63" rx="17"/>
+      <rect x="632" y="294" width="34" height="63" rx="17"/>
+    </g>
+    <!-- small header marker -->
+    <rect x="689" y="384" width="70" height="8" rx="4" class="uv-cream" fill="#F4E7D4"/>
+
+    <!-- calendar cells -->
+    <g>
+      <rect x="524" y="414" width="52" height="50" rx="10" fill="url(#warmCell)"/>
+      <rect x="587" y="414" width="52" height="50" rx="10" class="uv-brown" fill="#7B4C2C"/>
+      <rect x="650" y="414" width="52" height="50" rx="10" class="uv-dark" fill="#4B2E1E"/>
+      <rect x="713" y="414" width="52" height="50" rx="10" fill="url(#warmCell)"/>
+
+      <rect x="524" y="475" width="52" height="50" rx="10" class="uv-dark" fill="#4B2E1E"/>
+      <rect x="587" y="475" width="52" height="50" rx="10" class="uv-brown" fill="#7B4C2C"/>
+      <rect x="650" y="475" width="52" height="50" rx="10" fill="url(#warmCell)"/>
+      <path d="M 727 474
+               C 743 464 763 468 765 482
+               C 766 496 751 515 735 524
+               C 722 531 713 526 714 516
+               C 715 503 719 489 727 474 Z"
+            class="uv-dark" fill="#4B2E1E"/>
+    </g>
+
+    <!-- subtle warm diagonal highlights -->
+    <path d="M 524 454 L 570 414 L 576 414 L 576 428 L 540 464 L 524 464 Z"
+          class="uv-gold" fill="#D39A43" opacity=".78"/>
+    <path d="M 650 454 L 696 414 L 702 414 L 702 428 L 666 464 L 650 464 Z"
+          class="uv-gold" fill="#D39A43" opacity=".60"/>
+    <path d="M 650 515 L 696 475 L 702 475 L 702 490 L 666 525 L 650 525 Z"
+          class="uv-beige" fill="#D7B88A" opacity=".85"/>
+  </g>
+
+  <!-- preserve the light separation stroke on the cap -->
+  <path d="M 680 344 L 714 363 L 746 348"
+        fill="none" class="uv-cream-stroke" stroke="#F4E7D4" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
