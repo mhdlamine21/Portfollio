@@ -936,84 +936,242 @@ footer {
     max-width: 100%;
   }
   .solar-system {
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
     margin: 0 auto;
   }
   .core {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
   }
   .core img {
-    width: 38px;
-    height: 38px;
-  }
-  .orbit-1 {
-    width: 200px;
-    height: 200px;
-  }
-  .orbit-2 {
-    width: 320px;
-    height: 320px;
-  }
-  .orbit-3 {
-    width: 440px;
-    height: 440px;
-  }
-  .planet {
     width: 35px;
     height: 35px;
   }
-  .planet img {
-    width: 20px;
-    height: 20px;
+  /* Ajustement des orbites pour 968px */
+  .orbit-1 {
+    width: 170px;
+    height: 170px;
   }
-  .planet-wrapper {
-    top: -17px;
+  .orbit-2 {
+    width: 260px;
+    height: 260px;
+  }
+  .orbit-3 {
+    width: 350px;
+    height: 350px;
+  }
+  /* Ajustement des planètes */
+  .planet {
+    width: 32px;
+    height: 32px;
+  }
+  .planet img {
+    width: 18px;
+    height: 18px;
+  }
+  /* Ajustement des positions des planètes */
+  .orbit-1 .planet-wrapper {
+    top: -16px;
+  }
+  .orbit-2 .planet-wrapper:first-child {
+    top: -18px;
+  }
+  .orbit-2 .planet-wrapper:last-child {
+    bottom: -18px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(1) {
+    top: -18px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(2) {
+    right: -18px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(3) {
+    bottom: -18px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .barre_navigation {
+    padding: 0 20px;
+  }
+  .liens_navigation {
+    display: none;
+  }
+  .bouton_menu {
+    display: flex;
+  }
+  .hero_boutons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .grille_apropos {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 20px;
+  }
+  .section_apropos,
+  .section_competences,
+  .section_projets,
+  .section_contact {
+    padding: 72px 0;
+  }
+  .grille_competences {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 20px;
+  }
+  .grille_projets {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+  .grille_contact {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px;
+  }
+  .stats_rangee {
+    flex-direction: column;
+  }
+  .pied_interieur {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+  .bouton_haut {
+    bottom: 20px;
+    right: 20px;
+  }
+  .filtres_domaine,
+  .filtres_projets {
+    padding: 0 20px;
+  }
+
   .solar-system {
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
   }
   .core {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
   }
   .core img {
     width: 30px;
     height: 30px;
   }
+  /* Ajustement des orbites pour 768px */
   .orbit-1 {
-    width: 130px;
-    height: 130px;
+    width: 145px;
+    height: 145px;
   }
   .orbit-2 {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
   .orbit-3 {
-    width: 270px;
-    height: 270px;
+    width: 295px;
+    height: 295px;
   }
+  /* Ajustement des planètes */
   .planet {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
   .planet img {
     width: 16px;
     height: 16px;
   }
+  /* Ajustement des positions */
+  .orbit-1 .planet-wrapper {
+    top: -14px;
+  }
+  .orbit-2 .planet-wrapper:first-child {
+    top: -15px;
+  }
+  .orbit-2 .planet-wrapper:last-child {
+    bottom: -15px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(1) {
+    top: -15px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(2) {
+    right: -15px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(3) {
+    bottom: -15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grille_competences {
+    grid-template-columns: 1fr 1fr;
+  }
+  .carte_formulaire {
+    padding: 20px;
+  }
+
   .hero_nom {
-    font-size: 32px;
+    font-size: 28px;
   }
   .hero_role {
-    font-size: 16px;
+    font-size: 14px;
   }
   .hero_bio {
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .solar-system {
+    width: 260px;
+    height: 260px;
+  }
+  .core {
+    width: 55px;
+    height: 55px;
+  }
+  .core img {
+    width: 26px;
+    height: 26px;
+  }
+  /* Ajustement des orbites pour 480px */
+  .orbit-1 {
+    width: 120px;
+    height: 120px;
+  }
+  .orbit-2 {
+    width: 180px;
+    height: 180px;
+  }
+  .orbit-3 {
+    width: 240px;
+    height: 240px;
+  }
+  /* Ajustement des planètes */
+  .planet {
+    width: 24px;
+    height: 24px;
+  }
+  .planet img {
+    width: 14px;
+    height: 14px;
+  }
+  /* Ajustement des positions */
+  .orbit-1 .planet-wrapper {
+    top: -12px;
+  }
+  .orbit-2 .planet-wrapper:first-child {
+    top: -12px;
+  }
+  .orbit-2 .planet-wrapper:last-child {
+    bottom: -12px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(1) {
+    top: -12px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(2) {
+    right: -12px;
+  }
+  .orbit-3 .planet-wrapper:nth-child(3) {
+    bottom: -12px;
   }
 }
 
