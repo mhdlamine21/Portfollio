@@ -1,4 +1,4 @@
-Le problème vient des backticks qui ne sont pas correctement fermés. Voici ton `README.md` corrigé et propre :
+Voici ton `README.md` complet et corrigé avec une structure propre :
 
 ```markdown
 # Portfolio - Mouhamadou Lamine Niang
@@ -13,15 +13,15 @@ Portfolio moderne et responsive d'étudiant en Génie Logiciel, avec mode clair/
 - 📱 Design responsive (mobile, tablette, desktop)
 - ✨ Animations au scroll (apparition verticale et latérale)
 - ⌨️ Effet machine à écrire dans le hero
-- 🎯 Filtres dynamiques pour les compétences (Front-end, Back-end, BDD, DevOps, Mobile)
+- 🎯 Filtres dynamiques pour les compétences
 - 📊 Barres de compétences animées
 - 🔢 Compteurs animés pour les statistiques
-- 🃏 Effet tilt 3D sur les cartes projets (desktop)
+- 🃏 Effet tilt 3D sur les cartes projets
 - 🖱️ Lueur de curseur personnalisée
 - 🔝 Bouton retour en haut
 - 🧭 Navigation active au scroll
 - 📧 Formulaire de contact avec FormSubmit
-- 🎨 Système solaire technologique animé (orbites, planètes, particules)
+- 🎨 Système solaire technologique animé
 - 🎨 34 icônes SVG incluses
 
 ## Structure du projet
@@ -34,37 +34,20 @@ Portfollio/
 ├── images/
 │ ├── profil.jpg
 │ ├── icons/
-│ │ ├── html.svg
-│ │ ├── css.svg
-│ │ ├── javascript.svg
-│ │ ├── python.svg
-│ │ ├── java.svg
-│ │ ├── php.svg
-│ │ ├── flutter.svg
-│ │ ├── git.svg
-│ │ ├── github.svg
-│ │ ├── linkedin.svg
-│ │ ├── email.svg
-│ │ └── ...
 │ └── projects/
-│ ├── votenow.svg
-│ ├── univ-scheduler.svg
-│ └── codezone.svg
 └── documents/
 ├── CV/
-│ └── Mon_cv.pdf
 └── certificats/
 
 ````
 
 ## Installation
 
-1. Cloner le dépôt :
 ```bash
 git clone https://github.com/mhdlamine21/Portfollio.git
 ````
 
-2. Ouvrir `index.html` dans votre navigateur
+Ouvrir `index.html` dans votre navigateur.
 
 ## Personnalisation
 
@@ -93,16 +76,9 @@ Copiez un bloc `article.carte_projet` existant et personnalisez-le.
 
 Dans `script.js`, modifiez le tableau `mots` dans la fonction `lancer_animation_texte()`.
 
-### Modifier les couleurs du thème
-
-Les couleurs principales sont définies dans les variables CSS `:root` (mode clair) et `[data-theme="sombre"]` (mode sombre).
-
 ## Déploiement
 
-### GitHub Pages
-
-Le site est déjà déployé sur GitHub Pages à l'adresse :
-[https://mhdlamine21.github.io/Portfollio/](https://mhdlamine21.github.io/Portfollio/)
+Le site est déployé sur GitHub Pages : [https://mhdlamine21.github.io/Portfollio/](https://mhdlamine21.github.io/Portfollio/)
 
 Pour mettre à jour :
 
@@ -115,7 +91,7 @@ git push origin main
 ## Technologies utilisées
 
 - HTML5
-- CSS3 (variables CSS, animations, flexbox, grid)
+- CSS3
 - JavaScript (ES6+)
 - Intersection Observer API
 - SVG personnalisés
