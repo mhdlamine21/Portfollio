@@ -1,3 +1,5 @@
+Le problème vient des backticks qui ne sont pas correctement fermés. Voici ton `README.md` corrigé et propre :
+
 ```markdown
 # Portfolio - Mouhamadou Lamine Niang
 
@@ -20,18 +22,18 @@ Portfolio moderne et responsive d'étudiant en Génie Logiciel, avec mode clair/
 - 🧭 Navigation active au scroll
 - 📧 Formulaire de contact avec FormSubmit
 - 🎨 Système solaire technologique animé (orbites, planètes, particules)
-- 🎨 icônes SVG incluses
+- 🎨 34 icônes SVG incluses
 
 ## Structure du projet
 ```
 
 Portfollio/
-├── index.html # Page principale
-├── style.css # Styles CSS
-├── script.js # Interactions JavaScript
+├── index.html
+├── style.css
+├── script.js
 ├── images/
-│ ├── profil.jpg # Photo de profil
-│ ├── icons/ # Icônes des technologies (34 SVG)
+│ ├── profil.jpg
+│ ├── icons/
 │ │ ├── html.svg
 │ │ ├── css.svg
 │ │ ├── javascript.svg
@@ -44,17 +46,16 @@ Portfollio/
 │ │ ├── linkedin.svg
 │ │ ├── email.svg
 │ │ └── ...
-│ └── projects/ # Logos des projets
+│ └── projects/
 │ ├── votenow.svg
 │ ├── univ-scheduler.svg
 │ └── codezone.svg
 └── documents/
-├── CV/ # Dossier pour le CV
+├── CV/
 │ └── Mon_cv.pdf
-└── certificats/ # Dossier pour les certificats
+└── certificats/
 
 ````
-## Si vous voulez reproduire le même portfolio vous pouvez suivre les instruction suivantes :
 
 ## Installation
 
@@ -98,10 +99,18 @@ Les couleurs principales sont définies dans les variables CSS `:root` (mode cla
 
 ## Déploiement
 
-### GitHub Pages (actuel)
+### GitHub Pages
 
 Le site est déjà déployé sur GitHub Pages à l'adresse :
 [https://mhdlamine21.github.io/Portfollio/](https://mhdlamine21.github.io/Portfollio/)
+
+Pour mettre à jour :
+
+```bash
+git add .
+git commit -m "Votre message"
+git push origin main
+```
 
 ## Technologies utilisées
 
