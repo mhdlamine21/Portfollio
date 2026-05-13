@@ -438,37 +438,106 @@ function ajouterParticulesOrbite() {
   const solarSystem = document.querySelector(".solar-system");
   if (!solarSystem) return;
 
-  const positions = [
-    { x: 55, y: 0, delay: 0 },
-    { x: -55, y: 0, delay: 1 },
-    { x: 0, y: 55, delay: 0.5 },
-    { x: 0, y: -55, delay: 1.5 },
-    { x: 40, y: 40, delay: 0.3 },
-    { x: -40, y: 40, delay: 0.8 },
-    { x: 40, y: -40, delay: 1.2 },
-    { x: -40, y: -40, delay: 1.7 },
-    { x: 70, y: 25, delay: 0.2 },
-    { x: -70, y: 25, delay: 0.7 },
-    { x: 70, y: -25, delay: 1.1 },
-    { x: -70, y: -25, delay: 1.6 },
-    { x: 25, y: 70, delay: 0.4 },
-    { x: -25, y: 70, delay: 0.9 },
-    { x: 25, y: -70, delay: 1.3 },
-    { x: -25, y: -70, delay: 1.8 },
+  // Rayons de base (en pixels)
+  const baseRadius = {
+    orbit1: 85,
+    orbit2: 140,
+    orbit3: 195,
+  };
+
+  // Fonction pour obtenir le facteur d'échelle selon l'écran
+  function getScale() {
+    if (window.innerWidth <= 480) return 0.55;
+    if (window.innerWidth <= 768) return 0.7;
+    if (window.innerWidth <= 968) return 0.85;
+    return 1;
+  }
+
+  let currentScale = getScale();
+  let particles = [];
+  let animationId = null;
+
+  // Configuration des particules (rayons de base NON multipliés)
+  const orbitesConfig = [
+    { radius: baseRadius.orbit1, count: 1, sizes: [5], speeds: [1.2] },
+    {
+      radius: baseRadius.orbit2,
+      count: 4,
+      sizes: [4, 5, 3, 6],
+      speeds: [0.8, 1.0, 0.6, 1.1],
+    },
+    { radius: baseRadius.orbit3, count: 2, sizes: [5, 4], speeds: [0.5, 0.7] },
   ];
 
-  positions.forEach((pos, i) => {
-    const particle = document.createElement("div");
-    particle.className = "orbit-particle";
-    particle.style.position = "absolute";
-    particle.style.left = `calc(50% + ${pos.x}px)`;
-    particle.style.top = `calc(50% + ${pos.y}px)`;
-    particle.style.animationDelay = `${pos.delay}s`;
-    particle.style.animationDuration = `${1.5 + (i % 3)}s`;
-    particle.style.width = `${3 + (i % 4)}px`;
-    particle.style.height = `${3 + (i % 4)}px`;
-    solarSystem.appendChild(particle);
+  // Création des particules
+  orbitesConfig.forEach((orbit) => {
+    for (let i = 0; i < orbit.count; i++) {
+      const angleInitial = (360 / orbit.count) * i;
+      const size = orbit.sizes[i % orbit.sizes.length];
+      const speed = orbit.speeds[i % orbit.speeds.length];
+
+      const particle = document.createElement("div");
+      particle.className = "orbit-particle";
+      particle.style.position = "absolute";
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.borderRadius = "50%";
+      particle.style.background = "var(--acc)";
+      particle.style.opacity = "0.8";
+      particle.style.pointerEvents = "none";
+      particle.style.boxShadow = "0 0 4px var(--acc)";
+      particle.style.animation = "pulse-particle 2s ease-in-out infinite";
+
+      particles.push({
+        element: particle,
+        baseRadius: orbit.radius,
+        currentRadius: orbit.radius * currentScale,
+        angle: angleInitial,
+        speed: speed,
+      });
+
+      solarSystem.appendChild(particle);
+    }
   });
+
+  // Mise à jour des positions des particules
+  function updateParticlesPositions() {
+    particles.forEach((particle) => {
+      const rad = (particle.angle * Math.PI) / 180;
+      const x = Math.cos(rad) * particle.currentRadius;
+      const y = Math.sin(rad) * particle.currentRadius;
+      particle.element.style.left = `calc(50% + ${x}px)`;
+      particle.element.style.top = `calc(50% + ${y}px)`;
+    });
+  }
+
+  // Animation des particules
+  function animerParticules() {
+    particles.forEach((particle) => {
+      particle.angle += particle.speed;
+      if (particle.angle >= 360) particle.angle -= 360;
+    });
+    updateParticlesPositions();
+    animationId = requestAnimationFrame(animerParticules);
+  }
+
+  // Gestion du redimensionnement
+  function handleResize() {
+    const newScale = getScale();
+    if (newScale !== currentScale) {
+      currentScale = newScale;
+      particles.forEach((particle) => {
+        particle.currentRadius = particle.baseRadius * currentScale;
+      });
+      updateParticlesPositions();
+    }
+  }
+
+  window.addEventListener("resize", () => {
+    setTimeout(handleResize, 100);
+  });
+
+  animerParticules();
 }
 
 // Lancement au chargement
