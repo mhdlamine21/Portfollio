@@ -105,93 +105,175 @@
     <main>
       <!-- HERO -->
       <section id="accueil" class="section_hero" aria-label="Présentation">
-        <div class="hero_contenu">
-          <div class="badge_disponible apparition" style="--delai: 0s">
-            <span class="point_ping"></span>Disponible pour un stage
-          </div>
+        <div class="hero_container">
+          <!-- PARTIE GAUCHE -->
+          <div class="hero_gauche">
+            <div class="hero_badge_wrapper">
+              <div class="badge_disponible">
+                <span class="point_ping"></span>Disponible pour un stage
+              </div>
+            </div>
 
-          <p class="hero_bonjour apparition" style="--delai: 0.15s">
-            Bonjour, je suis
-          </p>
+            <p class="hero_bonjour">Bonjour, je suis</p>
 
-          <h1 class="hero_nom apparition" style="--delai: 0.3s">
-            Mouhamadou <span class="nom_suite">Lamine Niang</span>
-          </h1>
+            <h1 class="hero_nom">Mouhamadou Lamine Niang</h1>
 
-          <p class="hero_role apparition" style="--delai: 0.45s">
-            Étudiant en
-            <span class="role_accent" id="texte_anime">Génie Logiciel</span>
-          </p>
+            <p class="hero_role">
+              Étudiant en
+              <span class="role_accent" id="texte_anime">Génie Logiciel</span>
+            </p>
 
-          <p class="hero_universite apparition" style="--delai: 0.55s">
-            Université Iba Der Thiam de Thiès 🇸🇳
-          </p>
+            <p class="hero_universite">Université Iba Der Thiam de Thiès 🇸🇳</p>
 
-          <p class="hero_bio apparition" style="--delai: 0.65s">
-            Passionné d'ingénierie logicielle et de systèmes d'information
-            depuis mes premières lignes de code, je m'intéresse à la conception
-            de solutions numériques robustes et utiles. Je souhaite contribuer
-            au développement technologique du Sénégal et de l'Afrique à travers
-            des projets concrets.
-          </p>
+            <p class="hero_bio">
+              Passionné d'ingénierie logicielle et de systèmes d'information
+              depuis mes premières lignes de code, je m'intéresse à la
+              conception de solutions numériques robustes et utiles. Je souhaite
+              contribuer au développement technologique du Sénégal et de
+              l'Afrique à travers des projets concrets.
+            </p>
 
-          <div class="hero_boutons apparition" style="--delai: 0.75s">
-            <a href="documents/CV/Mon_cv.pdf" download class="bouton_principal">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+            <div class="hero_boutons">
+              <a
+                href="documents/CV/Mon_cv.pdf"
+                download
+                class="bouton_principal"
               >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Télécharger CV
-            </a>
-            <a href="#contact" class="bouton_secondaire">Me contacter</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Télécharger CV
+              </a>
+              <a href="#contact" class="bouton_secondaire">Me contacter</a>
+            </div>
+
+            <div class="hero_reseaux_wrapper">
+              <div class="hero_reseaux">
+                <a
+                  href="https://github.com/mhdlamine21"
+                  target="_blank"
+                  rel="noopener"
+                  class="lien_reseau"
+                  aria-label="GitHub"
+                >
+                  <img
+                    src="images/icons/github.svg"
+                    alt="GitHub"
+                    width="20"
+                    height="20"
+                  />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
+                  target="_blank"
+                  rel="noopener"
+                  class="lien_reseau"
+                  aria-label="LinkedIn"
+                >
+                  <img
+                    src="images/icons/linkedin.svg"
+                    alt="LinkedIn"
+                    width="20"
+                    height="20"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div class="hero_reseaux apparition" style="--delai: 0.9s">
-            <a
-              href="https://github.com/mhdlamine21"
-              target="_blank"
-              rel="noopener"
-              class="lien_reseau"
-              aria-label="GitHub"
-            >
-              <img
-                src="images/icons/github.svg"
-                alt="GitHub"
-                width="20"
-                height="20"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mouhamadou-lamine-niang-a886a2361/"
-              target="_blank"
-              rel="noopener"
-              class="lien_reseau"
-              aria-label="LinkedIn"
-            >
-              <img
-                src="images/icons/linkedin.svg"
-                alt="LinkedIn"
-                width="20"
-                height="20"
-              />
-            </a>
-          </div>
+          <!-- PARTIE DROITE - SYSTÈME SOLAIRE TECH -->
+          <div class="hero_droite">
+            <div class="solar-system">
+              <div class="core">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
 
-          <div
-            class="indicateur_scroll apparition"
-            style="--delai: 1.1s"
-            aria-hidden="true"
-          >
-            <div class="souris_scroll"><div class="point_scroll"></div></div>
+              <div class="orbit orbit-1">
+                <div class="planet">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <rect
+                      x="4"
+                      y="4"
+                      width="16"
+                      height="16"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="orbit orbit-2">
+                <div class="planet">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 12a9 3 0 0 0 18 0"></path>
+                    <path d="M3 12v6a9 3 0 0 0 18 0v-6"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="orbit orbit-3">
+                <div class="planet">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="2" x2="12" y2="22"></line>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="orbit-glow"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -281,7 +363,6 @@
             <h2>Mes <span class="accent_titre">compétences</span></h2>
           </div>
 
-          <!-- Filtres domaine -->
           <div
             class="filtres_domaine reveler"
             role="tablist"
@@ -338,7 +419,6 @@
           </div>
 
           <div class="grille_competences" id="grille_competences">
-            <!-- FRONT-END -->
             <div
               class="carte_competence comp_html reveler"
               data-domaine="frontend"
@@ -407,8 +487,6 @@
               </div>
               <p class="competence_pct">85% — Front-end</p>
             </div>
-
-            <!-- BACK-END -->
 
             <div
               class="carte_competence comp_php reveler"
@@ -479,7 +557,6 @@
               <p class="competence_pct">68% — Back-end</p>
             </div>
 
-            <!-- BASES DE DONNÉES -->
             <div class="carte_competence comp_sql reveler" data-domaine="bdd">
               <div class="particule_flottante"></div>
               <div class="competence_icone icone_bleu_sql">
@@ -520,7 +597,6 @@
               <p class="competence_pct">78% — Bases de données</p>
             </div>
 
-            <!-- DEVOPS & OUTILS -->
             <div
               class="carte_competence comp_git reveler"
               data-domaine="devops"
@@ -567,7 +643,6 @@
               <p class="competence_pct">65% — Design</p>
             </div>
 
-            <!-- MOBILE -->
             <div
               class="carte_competence comp_flutter reveler"
               data-domaine="mobile"
@@ -626,7 +701,6 @@
           </div>
 
           <div class="grille_projets" id="grille_projets">
-            <!-- Projet 1: VoteNow -->
             <article class="carte_projet projet_deux reveler">
               <div class="barre_projet"></div>
               <div class="projet_entete">
@@ -672,7 +746,6 @@
               </a>
             </article>
 
-            <!-- Projet 2: Univ-Scheduler -->
             <article class="carte_projet projet_cinq reveler">
               <div class="barre_projet"></div>
               <div class="projet_entete">
@@ -721,7 +794,6 @@
               </a>
             </article>
 
-            <!-- Projet 3: CodeZoneSN -->
             <article class="carte_projet projet_un reveler">
               <div class="barre_projet"></div>
               <div class="projet_entete">

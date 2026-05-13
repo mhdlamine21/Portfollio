@@ -308,7 +308,7 @@ function initialiser_filtres_projets() {
   });
 }
 
-// Texte animé (machine à écrire)
+// Texte animé (machine à écrire) - Version corrigée
 function lancer_animation_texte() {
   const el = document.getElementById("texte_anime");
   if (!el) return;
@@ -327,6 +327,9 @@ function lancer_animation_texte() {
 
   el.style.borderRight = "2px solid currentColor";
   el.style.paddingRight = "3px";
+  el.style.display = "inline-block";
+  el.style.minWidth = "0px";
+  el.style.width = "auto";
 
   const style_curseur = document.createElement("style");
   style_curseur.textContent = `
@@ -337,26 +340,31 @@ function lancer_animation_texte() {
 
   function taper() {
     const mot = mots[i_mot];
-    const txt = supprime
-      ? mot.substring(0, i_char - 1)
-      : mot.substring(0, i_char + 1);
-    el.textContent = txt;
-    supprime ? i_char-- : i_char++;
 
-    let delai = supprime ? 55 : 95;
-    if (!supprime && i_char === mot.length) {
-      delai = 2200;
-      supprime = true;
-    } else if (supprime && i_char === 0) {
-      supprime = false;
-      i_mot = (i_mot + 1) % mots.length;
-      delai = 400;
+    if (!supprime) {
+      if (i_char <= mot.length) {
+        el.textContent = mot.substring(0, i_char);
+        i_char++;
+        setTimeout(taper, 100);
+      } else {
+        supprime = true;
+        setTimeout(taper, 2000);
+      }
+    } else {
+      if (i_char >= 0) {
+        el.textContent = mot.substring(0, i_char);
+        i_char--;
+        setTimeout(taper, 50);
+      } else {
+        supprime = false;
+        i_mot = (i_mot + 1) % mots.length;
+        i_char = 0;
+        setTimeout(taper, 100);
+      }
     }
-
-    setTimeout(taper, delai);
   }
 
-  setTimeout(taper, 1400);
+  setTimeout(taper, 800);
 }
 
 // Formulaire de contact
@@ -426,10 +434,48 @@ const obs_footer = new IntersectionObserver(
 const footer = document.querySelector(".pied_page");
 if (footer) obs_footer.observe(footer);
 
+function ajouterParticulesOrbite() {
+  const solarSystem = document.querySelector(".solar-system");
+  if (!solarSystem) return;
+
+  const positions = [
+    { x: 55, y: 0, delay: 0 },
+    { x: -55, y: 0, delay: 1 },
+    { x: 0, y: 55, delay: 0.5 },
+    { x: 0, y: -55, delay: 1.5 },
+    { x: 40, y: 40, delay: 0.3 },
+    { x: -40, y: 40, delay: 0.8 },
+    { x: 40, y: -40, delay: 1.2 },
+    { x: -40, y: -40, delay: 1.7 },
+    { x: 70, y: 25, delay: 0.2 },
+    { x: -70, y: 25, delay: 0.7 },
+    { x: 70, y: -25, delay: 1.1 },
+    { x: -70, y: -25, delay: 1.6 },
+    { x: 25, y: 70, delay: 0.4 },
+    { x: -25, y: 70, delay: 0.9 },
+    { x: 25, y: -70, delay: 1.3 },
+    { x: -25, y: -70, delay: 1.8 },
+  ];
+
+  positions.forEach((pos, i) => {
+    const particle = document.createElement("div");
+    particle.className = "orbit-particle";
+    particle.style.position = "absolute";
+    particle.style.left = `calc(50% + ${pos.x}px)`;
+    particle.style.top = `calc(50% + ${pos.y}px)`;
+    particle.style.animationDelay = `${pos.delay}s`;
+    particle.style.animationDuration = `${1.5 + (i % 3)}s`;
+    particle.style.width = `${3 + (i % 4)}px`;
+    particle.style.height = `${3 + (i % 4)}px`;
+    solarSystem.appendChild(particle);
+  });
+}
+
 // Lancement au chargement
 document.addEventListener("DOMContentLoaded", () => {
   initialiser_filtres_competences();
   initialiser_filtres_projets();
   lancer_animation_texte();
   initialiser_formulaire();
+  ajouterParticulesOrbite();
 });
