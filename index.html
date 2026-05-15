@@ -307,70 +307,248 @@
 
       <!-- À PROPOS -->
       <section id="apropos" class="section_apropos" aria-label="À propos">
-        <div class="conteneur">
-          <div class="titre_section reveler">
-            <span class="etiquette_section">01 — À propos</span>
-            <h2>À propos <span class="accent_titre">de moi</span></h2>
+        <div class="conteneur apropos_container">
+          <div class="apropos_header">
+            <span class="apropos_label">01 — À PROPOS</span>
+            <h2 class="apropos_titre">
+              À propos <span class="accent_gradient">de moi</span>
+            </h2>
           </div>
-          <div class="grille_apropos">
-            <div class="carte_profil reveler-gauche">
-              <div class="avatar_cercle">
-                <img src="images/profil.jpg" alt="Mouhamadou Lamine Niang" />
+
+          <div class="apropos_grid">
+            <!-- PARTIE GAUCHE - CARTE PROFIL NOUVEAU DESIGN -->
+            <div class="apropos_card">
+              <!-- Glow lumineux derrière la carte -->
+              <div class="card_glow"></div>
+
+              <!-- Grille de points décoratifs en haut à gauche -->
+              <div class="card_dots_grid">
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
+                <div class="dot_grid"></div>
               </div>
-              <h3 class="profil_nom">Mouhamadou Lamine Niang</h3>
-              <p class="profil_role">Étudiant en Génie Logiciel</p>
-              <div class="profil_badges">
-                <span class="badge_competence">Génie Logiciel</span>
-                <span class="badge_competence">Analyse</span>
-                <span class="badge_competence">Conception</span>
+
+              <!-- Badge Étudiant flottant en haut à droite -->
+              <div class="student_badge">
+                <span class="badge_ping"></span>
+                <span>Étudiant</span>
+              </div>
+
+              <!-- Zone photo avec orbites -->
+              <div class="photo_orbit_system">
+                <div class="photo_container">
+                  <div class="avatar_cercle">
+                    <img
+                      src="images/profil.jpg"
+                      alt="Mouhamadou Lamine Niang"
+                    />
+                  </div>
+                  <!-- Anneau principal -->
+                  <div class="orbit_ring_main"></div>
+                  <!-- Arc orbital haut gauche -->
+                  <div class="orbit_arc arc_tl"></div>
+                  <!-- Arc orbital bas droite -->
+                  <div class="orbit_arc arc_br"></div>
+                  <!-- Petit point satellite sur arc -->
+                  <div class="orbit_satellite satellite_1"></div>
+                  <div class="orbit_satellite satellite_2"></div>
+                  <div class="orbit_satellite satellite_3"></div>
+                </div>
+              </div>
+
+              <!-- Nom et rôle -->
+              <h3 class="card_nom">Mouhamadou Lamine Niang</h3>
+              <p class="card_role">Étudiant en Génie Logiciel</p>
+
+              <!-- Tags -->
+              <div class="card_tags">
+                <div class="tag_row">
+                  <span class="tag">
+                    <img
+                      src="images/icons/data.svg"
+                      alt=""
+                      width="14"
+                      height="14"
+                      class="tag_icon"
+                    />
+                    Analyse
+                  </span>
+                  <span class="tag">
+                    <img
+                      src="images/icons/cube.svg"
+                      alt=""
+                      width="14"
+                      height="14"
+                      class="tag_icon"
+                    />
+                    Modélisation
+                  </span>
+                </div>
+                <div class="tag_row">
+                  <span class="tag tag_center">
+                    <img
+                      src="images/icons/pencil.svg"
+                      alt=""
+                      width="14"
+                      height="14"
+                      class="tag_icon"
+                    />
+                    Conception
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="texte_apropos reveler-droite">
-              <p>
-                Je suis étudiant en
-                <a
-                  href="http://www.univ-thies.sn"
-                  target="_blank"
-                  class="lien_accent"
-                  >3ᵉ année de licence Informatique</a
-                >
-                ,option <strong>Génie Logiciel</strong>, à l'Université Iba Der
-                Thiam de Thiès.
-              </p>
-              <p>
-                Mon parcours m'a permis de développer des compétences solides en
-                programmation orientée objet, en bases de données
-                relationnelles, en systèmes d'information et en développement
-                web. J'explore également le développement mobile et les
-                architectures logicielles dans le cadre de mes projets
-                académiques et personnels.
-              </p>
-              <p>
-                Je crois que la technologie peut transformer l'Afrique, et je
-                souhaite y contribuer à travers des solutions logicielles
-                robustes et bien conçues.
-              </p>
-              <p>
-                Fondateur de <strong>CodeZoneSN</strong>, un blog pour les
-                étudiants en informatique au Sénégal.
-              </p>
-              <p>
-                Mon objectif : renforcer mes compétences techniques à travers
-                des projets concrets et m'orienter vers l'ingénierie logicielle
-                avancée.
-              </p>
-              <div class="stats_rangee">
-                <div class="carte_stat">
-                  <span class="stat_chiffre" data-cible="3">0+</span>
-                  <span class="stat_label">Projets</span>
+
+            <!-- PARTIE DROITE - TIMELINE TEXTE + STATISTIQUES -->
+            <div class="apropos_droite">
+              <div class="apropos_timeline">
+                <div class="timeline_item">
+                  <div class="timeline_icon">
+                    <img
+                      src="images/icons/graduation-cap.svg"
+                      alt=""
+                      width="18"
+                      height="18"
+                    />
+                  </div>
+                  <div class="timeline_content">
+                    <p>
+                      Je suis étudiant en
+                      <a
+                        href="http://www.univ-thies.sn"
+                        target="_blank"
+                        class="lien_accent"
+                        >3ᵉ année de licence Informatique</a
+                      >, option <strong>Génie Logiciel</strong>, à l'Université
+                      Iba Der Thiam de Thiès.
+                    </p>
+                  </div>
                 </div>
-                <div class="carte_stat">
-                  <span class="stat_chiffre" data-cible="10">0+</span>
-                  <span class="stat_label">Technologies</span>
+
+                <div class="timeline_item">
+                  <div class="timeline_icon">
+                    <img
+                      src="images/icons/bag.svg"
+                      alt=""
+                      width="18"
+                      height="18"
+                    />
+                  </div>
+                  <div class="timeline_content">
+                    <p>
+                      Mon parcours m'a permis de développer des compétences
+                      solides en programmation orientée objet, en bases de
+                      données relationnelles, en systèmes d'information et en
+                      développement web. J'explore également le développement
+                      mobile et les architectures logicielles dans le cadre de
+                      mes projets académiques et personnels.
+                    </p>
+                  </div>
                 </div>
-                <div class="carte_stat">
-                  <span class="stat_chiffre" data-cible="2">0+</span>
-                  <span class="stat_label">Ans d'apprentissage</span>
+
+                <div class="timeline_item">
+                  <div class="timeline_icon">
+                    <img
+                      src="images/icons/goal.svg"
+                      alt=""
+                      width="18"
+                      height="18"
+                    />
+                  </div>
+                  <div class="timeline_content">
+                    <p>
+                      Je crois que la technologie peut transformer l'Afrique, et
+                      je souhaite y contribuer à travers des solutions
+                      logicielles robustes et bien conçues.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline_item">
+                  <div class="timeline_icon">
+                    <img
+                      src="images/icons/code.svg"
+                      alt=""
+                      width="18"
+                      height="18"
+                    />
+                  </div>
+                  <div class="timeline_content">
+                    <p>
+                      Fondateur de <strong>CodeZoneSN</strong>, un blog pour les
+                      étudiants en informatique au Sénégal.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline_item">
+                  <div class="timeline_icon">
+                    <img
+                      src="images/icons/fusée.svg"
+                      alt=""
+                      width="18"
+                      height="18"
+                    />
+                  </div>
+                  <div class="timeline_content">
+                    <p>
+                      Mon objectif : renforcer mes compétences techniques à
+                      travers des projets concrets et m'orienter vers
+                      l'ingénierie logicielle avancée.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STATISTIQUES -->
+              <div class="stats_modernes">
+                <div class="stat_card">
+                  <div class="stat_icon">
+                    <img
+                      src="images/icons/folder-closed.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <div class="stat_number">
+                    <span class="stat_chiffre" data-cible="3">3</span>+
+                  </div>
+                  <div class="stat_label">Projets</div>
+                </div>
+                <div class="stat_card">
+                  <div class="stat_icon">
+                    <img
+                      src="images/icons/code.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <div class="stat_number">
+                    <span class="stat_chiffre" data-cible="10">10</span>+
+                  </div>
+                  <div class="stat_label">Technologies</div>
+                </div>
+                <div class="stat_card">
+                  <div class="stat_icon">
+                    <img
+                      src="images/icons/graduation-cap.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <div class="stat_number">
+                    <span class="stat_chiffre" data-cible="2">2</span>+
+                  </div>
+                  <div class="stat_label">Ans d'apprentissage</div>
                 </div>
               </div>
             </div>
