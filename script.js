@@ -548,3 +548,74 @@ document.addEventListener("DOMContentLoaded", () => {
   initialiser_formulaire();
   ajouterParticulesOrbite();
 });
+
+// Nouveaux filtres compétences
+const filterBtns = document.querySelectorAll(".filter_btn_new");
+const skillCards = document.querySelectorAll(".skill_card");
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach((b) => b.classList.remove("active_filter"));
+    btn.classList.add("active_filter");
+
+    const filterValue = btn.getAttribute("data-filter");
+
+    skillCards.forEach((card) => {
+      if (
+        filterValue === "all" ||
+        card.getAttribute("data-category") === filterValue
+      ) {
+        card.classList.remove("hidden_card");
+      } else {
+        card.classList.add("hidden_card");
+      }
+    });
+  });
+});
+
+// Animation des barres de compétences au scroll
+const skillBars = document.querySelectorAll(".skill_bar");
+const skillsSection = document.querySelector(".section_competences");
+
+const observerSkills = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        skillBars.forEach((bar) => {
+          const width = bar.getAttribute("data-width");
+          setTimeout(() => {
+            bar.style.width = width + "%";
+          }, 200);
+        });
+        observerSkills.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 },
+);
+
+if (skillsSection) observerSkills.observe(skillsSection);
+
+// Filtres certifications
+const certFilterBtns = document.querySelectorAll(".cert_filter_btn");
+const certCards = document.querySelectorAll(".cert_card");
+
+certFilterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    certFilterBtns.forEach((b) => b.classList.remove("active_cert_filter"));
+    btn.classList.add("active_cert_filter");
+
+    const filterValue = btn.getAttribute("data-cert-filter");
+
+    certCards.forEach((card) => {
+      if (
+        filterValue === "all" ||
+        card.getAttribute("data-cert-category") === filterValue
+      ) {
+        card.classList.remove("hidden_cert");
+      } else {
+        card.classList.add("hidden_cert");
+      }
+    });
+  });
+});

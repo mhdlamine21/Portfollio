@@ -556,7 +556,7 @@
         </div>
       </section>
 
-      <!-- COMPÉTENCES avec filtres par domaine -->
+      <!-- COMPÉTENCES - NOUVEAU DESIGN -->
       <section
         id="competences"
         class="section_competences"
@@ -567,336 +567,637 @@
             <span class="etiquette_section">02 — Compétences</span>
             <h2>Mes <span class="accent_titre">compétences</span></h2>
           </div>
+        </div>
 
-          <div
-            class="filtres_domaine reveler"
-            role="tablist"
-            aria-label="Filtrer par domaine"
-          >
-            <button
-              class="filtre_btn actif_filtre"
-              data-domaine="tous"
-              role="tab"
-              aria-selected="true"
-            >
-              Tous
-            </button>
-            <button
-              class="filtre_btn"
-              data-domaine="frontend"
-              role="tab"
-              aria-selected="false"
-            >
-              Front-end
-            </button>
-            <button
-              class="filtre_btn"
-              data-domaine="backend"
-              role="tab"
-              aria-selected="false"
-            >
-              Back-end
-            </button>
-            <button
-              class="filtre_btn"
-              data-domaine="bdd"
-              role="tab"
-              aria-selected="false"
-            >
-              Bases de données
-            </button>
-            <button
-              class="filtre_btn"
-              data-domaine="devops"
-              role="tab"
-              aria-selected="false"
-            >
-              DevOps & Outils
-            </button>
-            <button
-              class="filtre_btn"
-              data-domaine="mobile"
-              role="tab"
-              aria-selected="false"
-            >
-              Mobile
-            </button>
+        <div class="competences_container">
+          <!-- PARTIE GAUCHE - COMPÉTENCES -->
+          <div class="competences_left">
+            <div class="competences_filters">
+              <button class="filter_btn_new active_filter" data-filter="all">
+                Tous
+              </button>
+              <button class="filter_btn_new" data-filter="frontend">
+                Front-end
+              </button>
+              <button class="filter_btn_new" data-filter="backend">
+                Back-end
+              </button>
+              <button class="filter_btn_new" data-filter="bdd">
+                Bases de données
+              </button>
+              <button class="filter_btn_new" data-filter="devops">
+                DevOps & Outils
+              </button>
+              <button class="filter_btn_new" data-filter="mobile">
+                Mobile
+              </button>
+            </div>
+
+            <!-- Grille compétences -->
+            <div class="competences_grid" id="competences_grid">
+              <!-- HTML -->
+              <div class="skill_card" data-category="frontend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_orange">
+                    <img
+                      src="images/icons/html.svg"
+                      alt="HTML"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">HTML5</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="90">90%</span>
+                  <span class="skill_label">Front-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="90"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- CSS -->
+              <div class="skill_card" data-category="frontend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_bleu">
+                    <img
+                      src="images/icons/css.svg"
+                      alt="CSS"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">CSS3</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="85">85%</span>
+                  <span class="skill_label">Front-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="85"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- JavaScript -->
+              <div class="skill_card" data-category="frontend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_jaune">
+                    <img
+                      src="images/icons/javascript.svg"
+                      alt="JavaScript"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">JavaScript</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="85">85%</span>
+                  <span class="skill_label">Front-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="85"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- PHP -->
+              <div class="skill_card" data-category="backend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_violet">
+                    <img
+                      src="images/icons/php.svg"
+                      alt="PHP"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">PHP</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="70">70%</span>
+                  <span class="skill_label">Back-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="70"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Python -->
+              <div class="skill_card" data-category="backend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_bleu_py">
+                    <img
+                      src="images/icons/python.svg"
+                      alt="Python"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Python</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="72">72%</span>
+                  <span class="skill_label">Back-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="72"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Java -->
+              <div class="skill_card" data-category="backend">
+                <div class="skill_header">
+                  <div class="skill_icon icone_orange_java">
+                    <img
+                      src="images/icons/java.svg"
+                      alt="Java"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Java</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="68">68%</span>
+                  <span class="skill_label">Back-end</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="68"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- SQL -->
+              <div class="skill_card" data-category="bdd">
+                <div class="skill_header">
+                  <div class="skill_icon icone_bleu_sql">
+                    <img
+                      src="images/icons/sql.svg"
+                      alt="SQL"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">SQL</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="80">80%</span>
+                  <span class="skill_label">Bases de données</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="80"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- MySQL -->
+              <div class="skill_card" data-category="bdd">
+                <div class="skill_header">
+                  <div class="skill_icon icone_bleu_mysql">
+                    <img
+                      src="images/icons/mysql.svg"
+                      alt="MySQL"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">MySQL</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="78">78%</span>
+                  <span class="skill_label">Bases de données</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="78"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Git -->
+              <div class="skill_card" data-category="devops">
+                <div class="skill_header">
+                  <div class="skill_icon icone_rouge_git">
+                    <img
+                      src="images/icons/git.svg"
+                      alt="Git"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Git</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="82">82%</span>
+                  <span class="skill_label">DevOps & Outils</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="82"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Figma -->
+              <div class="skill_card" data-category="devops">
+                <div class="skill_header">
+                  <div class="skill_icon icone_figma">
+                    <img
+                      src="images/icons/figma.svg"
+                      alt="Figma"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Figma</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="65">65%</span>
+                  <span class="skill_label">DevOps & Outils</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="65"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Flutter -->
+              <div class="skill_card" data-category="mobile">
+                <div class="skill_header">
+                  <div class="skill_icon icone_cyan_flutter">
+                    <img
+                      src="images/icons/flutter.svg"
+                      alt="Flutter"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Flutter</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="65">65%</span>
+                  <span class="skill_label">Mobile</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="65"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Dart -->
+              <div class="skill_card" data-category="mobile">
+                <div class="skill_header">
+                  <div class="skill_icon icone_bleu_dart">
+                    <img
+                      src="images/icons/dart.svg"
+                      alt="Dart"
+                      width="24"
+                      height="24"
+                    />
+                  </div>
+                  <span class="skill_name">Dart</span>
+                </div>
+                <div class="skill_stats">
+                  <span class="skill_percent" data-percent="60">60%</span>
+                  <span class="skill_label">Mobile</span>
+                </div>
+                <div class="skill_bar_container">
+                  <div
+                    class="skill_bar"
+                    data-width="60"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="grille_competences" id="grille_competences">
-            <!-- FRONT-END -->
-            <div
-              class="carte_competence comp_html reveler"
-              data-domaine="frontend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_orange">
-                <img
-                  src="images/icons/html.svg"
-                  alt="HTML"
-                  width="28"
-                  height="28"
-                />
+          <!-- PARTIE DROITE - CERTIFICATIONS -->
+          <div class="competences_right">
+            <div class="certifications_header">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 12px;
+                "
+              >
+                <div class="cert_icon_circle">
+                  <img
+                    src="images/icons/certificate.svg"
+                    alt="Diplôme"
+                    width="24"
+                    height="24"
+                    class="cert_circle_icon"
+                  />
+                </div>
+                <h3 style="margin: 0">Certifications</h3>
               </div>
-              <p class="competence_nom">HTML5</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_orange"
-                  data-niveau="90"
-                ></div>
-              </div>
-              <p class="competence_pct">90% — Front-end</p>
+              <p>Mes attestations et diplômes obtenus</p>
             </div>
 
-            <div
-              class="carte_competence comp_css reveler"
-              data-domaine="frontend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_bleu">
-                <img
-                  src="images/icons/css.svg"
-                  alt="CSS"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">CSS3</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_bleu"
-                  data-niveau="85"
-                ></div>
-              </div>
-              <p class="competence_pct">85% — Front-end</p>
+            <!-- Filtres certifications -->
+            <div class="cert_filters">
+              <button
+                class="cert_filter_btn active_cert_filter"
+                data-cert-filter="all"
+              >
+                Toutes
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="reseau">
+                Réseau
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="securite">
+                Sécurité
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="cloud">
+                Cloud
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="devops">
+                DevOps
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="dev">
+                Développement
+              </button>
+              <button class="cert_filter_btn" data-cert-filter="bdd">
+                Bases de données
+              </button>
             </div>
 
-            <div
-              class="carte_competence comp_js reveler"
-              data-domaine="frontend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_jaune">
-                <img
-                  src="images/icons/javascript.svg"
-                  alt="JavaScript"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">JavaScript</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_jaune"
-                  data-niveau="85"
-                ></div>
-              </div>
-              <p class="competence_pct">85% — Front-end</p>
-            </div>
+            <!-- Liste certifications -->
+            <div class="certifications_grid">
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="reseau"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/network.svg"
+                    alt="Réseau"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">CCNA : Introduction to Networks</div>
+                  <div class="cert_issuer">Cisco Networking Academy</div>
+                </div>
+                <div class="cert_badge">Réseau</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <!-- BACK-END -->
-            <div
-              class="carte_competence comp_php reveler"
-              data-domaine="backend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_violet">
-                <img
-                  src="images/icons/php.svg"
-                  alt="PHP"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">PHP</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_violet"
-                  data-niveau="70"
-                ></div>
-              </div>
-              <p class="competence_pct">70% — Back-end</p>
-            </div>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="securite"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/shield.svg"
+                    alt="Sécurité"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">Cybersecurity Essentials</div>
+                  <div class="cert_issuer">Cisco Networking Academy</div>
+                </div>
+                <div class="cert_badge">Sécurité</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <div
-              class="carte_competence comp_python reveler"
-              data-domaine="backend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_bleu_py">
-                <img
-                  src="images/icons/python.svg"
-                  alt="Python"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Python</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_bleu_py"
-                  data-niveau="72"
-                ></div>
-              </div>
-              <p class="competence_pct">72% — Back-end</p>
-            </div>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="cloud"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/cloud.svg"
+                    alt="Cloud"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">
+                    AWS Cloud Practitioner (en cours)
+                  </div>
+                  <div class="cert_issuer">Amazon Web Services</div>
+                </div>
+                <div class="cert_badge">Cloud</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <div
-              class="carte_competence comp_java reveler"
-              data-domaine="backend"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_orange_java">
-                <img
-                  src="images/icons/java.svg"
-                  alt="Java"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Java</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_orange_java"
-                  data-niveau="68"
-                ></div>
-              </div>
-              <p class="competence_pct">68% — Back-end</p>
-            </div>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="dev"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/code.svg"
+                    alt="Développement"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">
+                    JavaScript Algorithms and Data Structures
+                  </div>
+                  <div class="cert_issuer">freeCodeCamp</div>
+                </div>
+                <div class="cert_badge">Développement</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <!-- BASES DE DONNÉES -->
-            <div class="carte_competence comp_sql reveler" data-domaine="bdd">
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_bleu_sql">
-                <img
-                  src="images/icons/sql.svg"
-                  alt="SQL"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">SQL</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_bleu_sql"
-                  data-niveau="80"
-                ></div>
-              </div>
-              <p class="competence_pct">80% — Bases de données</p>
-            </div>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="dev"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/react.svg"
+                    alt="React"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">Frontend Development with React</div>
+                  <div class="cert_issuer">Meta / Coursera</div>
+                </div>
+                <div class="cert_badge">Développement</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <div class="carte_competence comp_mysql reveler" data-domaine="bdd">
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_bleu_mysql">
-                <img
-                  src="images/icons/mysql.svg"
-                  alt="MySQL"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">MySQL</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_bleu_mysql"
-                  data-niveau="78"
-                ></div>
-              </div>
-              <p class="competence_pct">78% — Bases de données</p>
-            </div>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="devops"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/docker.svg"
+                    alt="Docker"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">Docker Essentials</div>
+                  <div class="cert_issuer">IBM / Coursera</div>
+                </div>
+                <div class="cert_badge">DevOps</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
 
-            <!-- DEVOPS & OUTILS -->
-            <div
-              class="carte_competence comp_git reveler"
-              data-domaine="devops"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_rouge_git">
-                <img
-                  src="images/icons/git.svg"
-                  alt="Git"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Git</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_rouge_git"
-                  data-niveau="82"
-                ></div>
-              </div>
-              <p class="competence_pct">82% — DevOps</p>
-            </div>
-
-            <div
-              class="carte_competence comp_figma reveler"
-              data-domaine="devops"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_figma">
-                <img
-                  src="images/icons/figma.svg"
-                  alt="Figma"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Figma</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_figma"
-                  data-niveau="65"
-                ></div>
-              </div>
-              <p class="competence_pct">65% — Design</p>
-            </div>
-
-            <!-- MOBILE -->
-            <div
-              class="carte_competence comp_flutter reveler"
-              data-domaine="mobile"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_cyan_flutter">
-                <img
-                  src="images/icons/flutter.svg"
-                  alt="Flutter"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Flutter</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_cyan_flutter"
-                  data-niveau="65"
-                ></div>
-              </div>
-              <p class="competence_pct">65% — Mobile</p>
-            </div>
-
-            <div
-              class="carte_competence comp_dart reveler"
-              data-domaine="mobile"
-            >
-              <div class="particule_flottante"></div>
-              <div class="competence_icone icone_bleu_dart">
-                <img
-                  src="images/icons/dart.svg"
-                  alt="Dart"
-                  width="28"
-                  height="28"
-                />
-              </div>
-              <p class="competence_nom">Dart</p>
-              <div class="barre_fond">
-                <div
-                  class="barre_remplissage barre_bleu_dart"
-                  data-niveau="60"
-                ></div>
-              </div>
-              <p class="competence_pct">60% — Mobile</p>
+              <a
+                href="#"
+                class="cert_card"
+                data-cert-category="bdd"
+                target="_blank"
+              >
+                <div class="cert_icon">
+                  <img
+                    src="images/icons/database.svg"
+                    alt="Base données"
+                    width="24"
+                    height="24"
+                  />
+                </div>
+                <div class="cert_info">
+                  <div class="cert_title">SQL for Data Science</div>
+                  <div class="cert_issuer">University of California, Davis</div>
+                </div>
+                <div class="cert_badge">Bases de données</div>
+                <div class="cert_arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </a>
             </div>
           </div>
         </div>
