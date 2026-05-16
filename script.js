@@ -371,26 +371,131 @@ function lancer_animation_texte() {
 function initialiser_formulaire() {
   const formulaire = document.getElementById("formulaire_contact");
   const msg_succes = document.getElementById("message_succes");
+  const msg_error = document.getElementById("message_error");
   const btn_envoyer = document.getElementById("bouton_envoyer");
 
+  // Fonction de validation
+  function validerChamp(champ, type) {
+    const valeur = champ.value.trim();
+    let valide = true;
+    let message = "";
+
+    if (type === "nom") {
+      if (valeur === "") {
+        message = "Le nom est requis";
+        valide = false;
+      } else if (valeur.length < 2) {
+        message = "Nom trop court (minimum 2 caractères)";
+        valide = false;
+      }
+    } else if (type === "email") {
+      const regexEmail = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+      if (valeur === "") {
+        message = "L'email est requis";
+        valide = false;
+      } else if (!regexEmail.test(valeur)) {
+        message = "Email invalide (ex: nom@domaine.com)";
+        valide = false;
+      }
+    } else if (type === "objet") {
+      if (valeur === "") {
+        message = "L'objet est requis";
+        valide = false;
+      } else if (valeur.length < 3) {
+        message = "Objet trop court";
+        valide = false;
+      }
+    } else if (type === "message") {
+      if (valeur === "") {
+        message = "Le message est requis";
+        valide = false;
+      } else if (valeur.length < 10) {
+        message = "Message trop court (minimum 10 caractères)";
+        valide = false;
+      }
+    }
+
+    const errorSpan = document.getElementById(`error_${type}`);
+    if (errorSpan) {
+      errorSpan.textContent = message;
+    }
+
+    if (valide) {
+      champ.classList.remove("invalid");
+      champ.classList.add("valid");
+    } else {
+      champ.classList.remove("valid");
+      champ.classList.add("invalid");
+    }
+
+    return valide;
+  }
+
+  // Validation en temps réel
+  const champNom = document.getElementById("champ_nom");
+  const champEmail = document.getElementById("champ_email");
+  const champObjet = document.getElementById("champ_objet");
+  const champMessage = document.getElementById("champ_message");
+
+  if (champNom)
+    champNom.addEventListener("input", () => validerChamp(champNom, "nom"));
+  if (champEmail)
+    champEmail.addEventListener("input", () =>
+      validerChamp(champEmail, "email"),
+    );
+  if (champObjet)
+    champObjet.addEventListener("input", () =>
+      validerChamp(champObjet, "objet"),
+    );
+  if (champMessage)
+    champMessage.addEventListener("input", () =>
+      validerChamp(champMessage, "message"),
+    );
+
+  // Submission avec Formspree
   formulaire?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Validation
+    const nomValide = validerChamp(champNom, "nom");
+    const emailValide = validerChamp(champEmail, "email");
+    const objetValide = validerChamp(champObjet, "objet");
+    const messageValide = validerChamp(champMessage, "message");
+
+    // Honeypot
+    const honeypot = document.getElementById("honeypot");
+    if (honeypot && honeypot.value !== "") {
+      msg_succes?.classList.add("visible");
+      formulaire.reset();
+      setTimeout(() => msg_succes?.classList.remove("visible"), 3000);
+      return;
+    }
+
+    if (!nomValide || !emailValide || !objetValide || !messageValide) {
+      msg_error?.classList.add("visible");
+      setTimeout(() => msg_error?.classList.remove("visible"), 3000);
+      return;
+    }
+
     if (!btn_envoyer) return;
 
     btn_envoyer.disabled = true;
     btn_envoyer.innerHTML = `⏳ Envoi en cours...`;
 
     const formData = new FormData(formulaire);
-    formData.append("_captcha", "false");
+    formData.append(
+      "_subject",
+      champObjet?.value.trim() || "Nouveau message du portfolio",
+    );
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/mouhamedlniang@gmail.com",
-        {
-          method: "POST",
-          body: formData,
+      const response = await fetch(formulaire.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
         },
-      );
+      });
 
       if (response.ok) {
         btn_envoyer.innerHTML = "✅ Envoyé !";
@@ -399,6 +504,10 @@ function initialiser_formulaire() {
         msg_succes?.classList.add("visible");
         formulaire.reset();
 
+        [champNom, champEmail, champObjet, champMessage].forEach((champ) => {
+          if (champ) champ.classList.remove("valid", "invalid");
+        });
+
         setTimeout(() => {
           btn_envoyer.disabled = false;
           btn_envoyer.innerHTML = `Envoyer le message`;
@@ -406,14 +515,18 @@ function initialiser_formulaire() {
           msg_succes?.classList.remove("visible");
         }, 5000);
       } else {
-        throw new Error("Erreur d'envoi");
+        const data = await response.json();
+        throw new Error(data.error || "Erreur d'envoi");
       }
     } catch (error) {
+      console.error("Erreur:", error);
       btn_envoyer.innerHTML = "❌ Erreur, réessayez";
+      msg_error?.classList.add("visible");
       setTimeout(() => {
         btn_envoyer.disabled = false;
         btn_envoyer.innerHTML = `Envoyer le message`;
-      }, 3000);
+        msg_error?.classList.remove("visible");
+      }, 4000);
     }
   });
 }

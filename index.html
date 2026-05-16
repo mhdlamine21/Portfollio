@@ -1471,7 +1471,32 @@
             </div>
 
             <div class="carte_formulaire reveler-droite">
-              <form id="formulaire_contact" class="formulaire" novalidate>
+              <form
+                id="formulaire_contact"
+                class="formulaire"
+                action="https://formspree.io/f/mnjranow"
+                method="POST"
+                novalidate
+              >
+                <!-- HONEYPOT - Champ caché pour les bots -->
+                <div
+                  style="
+                    position: absolute;
+                    left: -9999px;
+                    top: -9999px;
+                    opacity: 0;
+                  "
+                >
+                  <label for="honeypot">Ne pas remplir</label>
+                  <input
+                    type="text"
+                    id="honeypot"
+                    name="_honey"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
                 <div class="champ_groupe">
                   <label for="champ_nom" class="etiquette_champ">
                     <svg
@@ -1491,13 +1516,15 @@
                   <input
                     type="text"
                     id="champ_nom"
-                    name="nom"
+                    name="name"
                     class="saisie_texte"
                     placeholder="Votre nom complet"
                     required
                     autocomplete="name"
                   />
+                  <span class="error-message" id="error_nom"></span>
                 </div>
+
                 <div class="champ_groupe">
                   <label for="champ_email" class="etiquette_champ">
                     <svg
@@ -1525,7 +1552,9 @@
                     required
                     autocomplete="email"
                   />
+                  <span class="error-message" id="error_email"></span>
                 </div>
+
                 <div class="champ_groupe">
                   <label for="champ_objet" class="etiquette_champ">
                     <svg
@@ -1547,12 +1576,14 @@
                   <input
                     type="text"
                     id="champ_objet"
-                    name="objet"
+                    name="subject"
                     class="saisie_texte"
                     placeholder="Stage, collaboration, question..."
                     required
                   />
+                  <span class="error-message" id="error_objet"></span>
                 </div>
+
                 <div class="champ_groupe">
                   <label for="champ_message" class="etiquette_champ">
                     <svg
@@ -1578,7 +1609,9 @@
                     required
                     rows="5"
                   ></textarea>
+                  <span class="error-message" id="error_message"></span>
                 </div>
+
                 <button
                   type="submit"
                   class="bouton_envoyer"
@@ -1598,6 +1631,7 @@
                   </svg>
                   Envoyer le message
                 </button>
+
                 <p
                   class="message_succes"
                   id="message_succes"
@@ -1605,6 +1639,14 @@
                   aria-live="polite"
                 >
                   ✅ Message envoyé ! Je vous répondrai bientôt.
+                </p>
+                <p
+                  class="message_error"
+                  id="message_error"
+                  role="alert"
+                  aria-live="polite"
+                >
+                  ❌ Erreur lors de l'envoi. Veuillez réessayer.
                 </p>
               </form>
             </div>
