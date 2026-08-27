@@ -180,7 +180,7 @@ git push origin main
 
 ---
 
-© 2026 Mouhamadou Lamine Niang — Software Developer 🇸🇳
+© 2026 Mouhamadou Lamine Niang - Software Developer 🇸🇳
 
 ```
 

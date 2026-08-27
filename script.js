@@ -4,6 +4,20 @@
 const theme_sauvegarde = localStorage.getItem("theme") || "clair";
 document.documentElement.dataset.theme = theme_sauvegarde;
 
+// Fonction utilitaire d'échappement XSS
+function echapperHTML(chaine) {
+  if (typeof chaine !== "string") return "";
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#x27;",
+    "/": "&#x2F;",
+  };
+  return chaine.replace(/[&<>"'/]/g, (char) => map[char]);
+}
+
 function basculer_theme() {
   const html = document.documentElement;
   const nouveau = html.dataset.theme === "clair" ? "sombre" : "clair";
@@ -547,120 +561,358 @@ const obs_footer = new IntersectionObserver(
 const footer = document.querySelector(".pied_page");
 if (footer) obs_footer.observe(footer);
 
-function ajouterParticulesOrbite() {
-  const solarSystem = document.querySelector(".solar-system");
-  if (!solarSystem) return;
+// Système Solaire 3D Réaliste avec orbites continues en temps réel et parallaxe
+function initialiser_systeme_solaire_3d() {
+  const stage = document.getElementById("solar_3d_stage");
+  const cosmos = document.getElementById("solar_3d_cosmos");
+  const starfield = document.getElementById("starfield_dust");
+  const planetNodes = document.querySelectorAll(".planet_3d_node");
 
-  // Rayons de base (en pixels)
-  const baseRadius = {
-    orbit1: 85,
-    orbit2: 140,
-    orbit3: 195,
-  };
+  if (!cosmos || !planetNodes.length) return;
 
-  // Fonction pour obtenir le facteur d'échelle selon l'écran
-  function getScale() {
-    if (window.innerWidth <= 480) return 0.55;
-    if (window.innerWidth <= 768) return 0.7;
-    if (window.innerWidth <= 968) return 0.85;
-    return 1;
-  }
+  // Calcul des rayons orbitaux selon la largeur d'écran
+  function getRadii() {
+    const w = window.innerWidth;
+    let r1 = 105;
+    let r2 = 160;
+    let r3 = 220;
 
-  let currentScale = getScale();
-  let particles = [];
-  let animationId = null;
-
-  // Configuration des particules (rayons de base NON multipliés)
-  const orbitesConfig = [
-    { radius: baseRadius.orbit1, count: 1, sizes: [5], speeds: [1.2] },
-    {
-      radius: baseRadius.orbit2,
-      count: 4,
-      sizes: [4, 5, 3, 6],
-      speeds: [0.8, 1.0, 0.6, 1.1],
-    },
-    { radius: baseRadius.orbit3, count: 2, sizes: [5, 4], speeds: [0.5, 0.7] },
-  ];
-
-  // Création des particules
-  orbitesConfig.forEach((orbit) => {
-    for (let i = 0; i < orbit.count; i++) {
-      const angleInitial = (360 / orbit.count) * i;
-      const size = orbit.sizes[i % orbit.sizes.length];
-      const speed = orbit.speeds[i % orbit.speeds.length];
-
-      const particle = document.createElement("div");
-      particle.className = "orbit-particle";
-      particle.style.position = "absolute";
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.borderRadius = "50%";
-      particle.style.background = "var(--acc)";
-      particle.style.opacity = "0.8";
-      particle.style.pointerEvents = "none";
-      particle.style.boxShadow = "0 0 4px var(--acc)";
-      particle.style.animation = "pulse-particle 2s ease-in-out infinite";
-
-      particles.push({
-        element: particle,
-        baseRadius: orbit.radius,
-        currentRadius: orbit.radius * currentScale,
-        angle: angleInitial,
-        speed: speed,
-      });
-
-      solarSystem.appendChild(particle);
+    if (w <= 480) {
+      r1 = 57;
+      r2 = 87;
+      r3 = 120;
+    } else if (w <= 768) {
+      r1 = 70;
+      r2 = 107;
+      r3 = 145;
+    } else if (w <= 968) {
+      r1 = 85;
+      r2 = 130;
+      r3 = 180;
     }
-  });
 
-  // Mise à jour des positions des particules
-  function updateParticlesPositions() {
-    particles.forEach((particle) => {
-      const rad = (particle.angle * Math.PI) / 180;
-      const x = Math.cos(rad) * particle.currentRadius;
-      const y = Math.sin(rad) * particle.currentRadius;
-      particle.element.style.left = `calc(50% + ${x}px)`;
-      particle.element.style.top = `calc(50% + ${y}px)`;
-    });
+    return { r1, r2, r3 };
   }
 
-  // Animation des particules
-  function animerParticules() {
-    particles.forEach((particle) => {
-      particle.angle += particle.speed;
-      if (particle.angle >= 360) particle.angle -= 360;
-    });
-    updateParticlesPositions();
-    animationId = requestAnimationFrame(animerParticules);
-  }
-
-  // Gestion du redimensionnement
-  function handleResize() {
-    const newScale = getScale();
-    if (newScale !== currentScale) {
-      currentScale = newScale;
-      particles.forEach((particle) => {
-        particle.currentRadius = particle.baseRadius * currentScale;
-      });
-      updateParticlesPositions();
-    }
-  }
-
+  let radii = getRadii();
   window.addEventListener("resize", () => {
-    setTimeout(handleResize, 100);
+    radii = getRadii();
   });
 
-  animerParticules();
+  // Initialisation des données d'orbite pour chaque planète
+  const planetsData = Array.from(planetNodes).map((node) => {
+    const orbitNum = parseInt(node.getAttribute("data-orbit"), 10) || 1;
+    const speed = parseFloat(node.getAttribute("data-speed")) || 0.02;
+    const initialAngleDeg = parseFloat(node.getAttribute("data-angle")) || 0;
+    const planetEl = node.querySelector(".planet_3d");
+
+    return {
+      node,
+      planetEl,
+      orbitNum,
+      speed,
+      angle: (initialAngleDeg * Math.PI) / 180,
+    };
+  });
+
+  // Création des points lumineux orbitaux (sur les anneaux) et des poussières cosmiques
+  const orbitPoints = [];
+  const dustParticles = [];
+
+  if (starfield) {
+    starfield.innerHTML = "";
+
+    // 1. Points lumineux directement sur les anneaux orbitaux
+    const orbitConfigs = [
+      { orbitNum: 1, count: 3, speed: 0.035, size: 6 },
+      { orbitNum: 2, count: 5, speed: -0.022, size: 5.5 },
+      { orbitNum: 3, count: 7, speed: 0.014, size: 5 },
+    ];
+
+    orbitConfigs.forEach((cfg) => {
+      for (let i = 0; i < cfg.count; i++) {
+        const p = document.createElement("div");
+        p.className = "orbit_luminous_point";
+        p.style.width = `${cfg.size}px`;
+        p.style.height = `${cfg.size}px`;
+        starfield.appendChild(p);
+
+        const initialAngle = (i * (360 / cfg.count) * Math.PI) / 180;
+        orbitPoints.push({
+          element: p,
+          orbitNum: cfg.orbitNum,
+          speed: cfg.speed,
+          angle: initialAngle,
+        });
+      }
+    });
+
+    // 2. Poussières cosmiques libres en gravitation
+    const nbPoussieres = 26;
+    for (let i = 0; i < nbPoussieres; i++) {
+      const p = document.createElement("div");
+      p.className = "dust_particle";
+      const taille = Math.random() * 3 + 2;
+      const baseRadius = 40 + Math.random() * 195;
+      const angle = Math.random() * Math.PI * 2;
+      // Vitesse selon distance orbitale
+      const baseSpeed = (0.01 + Math.random() * 0.018) * (130 / baseRadius);
+      const direction = Math.random() > 0.2 ? 1 : -1;
+      const speed = baseSpeed * direction;
+      const z = (Math.random() - 0.5) * 40;
+
+      p.style.width = `${taille}px`;
+      p.style.height = `${taille}px`;
+      starfield.appendChild(p);
+
+      dustParticles.push({
+        element: p,
+        baseRadius,
+        angle,
+        speed,
+        z,
+      });
+    }
+  }
+
+  let isHovered = false;
+  cosmos.addEventListener("mouseenter", () => { isHovered = true; });
+  cosmos.addEventListener("mouseleave", () => { isHovered = false; });
+
+  // Boucle d'animation orbitale fluide et continue
+  let lastTime = performance.now();
+
+  function animerOrbite(currentTime) {
+    const delta = Math.min((currentTime - lastTime) / 1000, 0.1);
+    lastTime = currentTime;
+
+    const speedMultiplier = isHovered ? 0.35 : 1;
+
+    // 1. Gravitation continue des planètes
+    planetsData.forEach((p) => {
+      p.angle += p.speed * speedMultiplier * delta * 50;
+
+      let r = radii.r1;
+      if (p.orbitNum === 2) r = radii.r2;
+      else if (p.orbitNum === 3) r = radii.r3;
+
+      const x = Math.cos(p.angle) * r;
+      const y = Math.sin(p.angle) * r;
+
+      p.node.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0px)`;
+
+      if (Math.sin(p.angle) > 0) {
+        p.node.style.zIndex = "150";
+        if (p.planetEl) p.planetEl.style.opacity = "1";
+      } else {
+        p.node.style.zIndex = "20";
+        if (p.planetEl) p.planetEl.style.opacity = "0.9";
+      }
+    });
+
+    // 2. Gravitation continue des points lumineux sur les anneaux
+    orbitPoints.forEach((op) => {
+      op.angle += op.speed * speedMultiplier * delta * 50;
+
+      let r = radii.r1;
+      if (op.orbitNum === 2) r = radii.r2;
+      else if (op.orbitNum === 3) r = radii.r3;
+
+      const x = Math.cos(op.angle) * r;
+      const y = Math.sin(op.angle) * r;
+
+      op.element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0px)`;
+
+      if (Math.sin(op.angle) > 0) {
+        op.element.style.zIndex = "140";
+        op.element.style.opacity = "1";
+      } else {
+        op.element.style.zIndex = "18";
+        op.element.style.opacity = "0.75";
+      }
+    });
+
+    // 3. Gravitation continue des poussières cosmiques
+    const scaleRatio = radii.r3 / 220;
+    dustParticles.forEach((d) => {
+      d.angle += d.speed * speedMultiplier * delta * 45;
+      const curRadius = d.baseRadius * scaleRatio;
+      const dx = Math.cos(d.angle) * curRadius;
+      const dy = Math.sin(d.angle) * curRadius;
+
+      d.element.style.transform = `translate3d(${dx.toFixed(2)}px, ${dy.toFixed(2)}px, ${d.z.toFixed(1)}px)`;
+
+      if (Math.sin(d.angle) > 0) {
+        d.element.style.zIndex = "130";
+      } else {
+        d.element.style.zIndex = "15";
+      }
+    });
+
+    requestAnimationFrame(animerOrbite);
+  }
+
+  requestAnimationFrame(animerOrbite);
+
+  // Parallaxe 3D interactive au mouvement de la souris (desktop)
+  if (stage && window.innerWidth > 768) {
+    let currentTiltX = 58;
+    let currentTiltZ = -16;
+    let targetTiltX = 58;
+    let targetTiltZ = -16;
+
+    stage.addEventListener("mousemove", (e) => {
+      const rect = stage.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      targetTiltX = 58 - ny * 18;
+      targetTiltZ = -16 + nx * 22;
+    });
+
+    stage.addEventListener("mouseleave", () => {
+      targetTiltX = 58;
+      targetTiltZ = -16;
+    });
+
+    function updateCosmosTilt() {
+      currentTiltX += (targetTiltX - currentTiltX) * 0.08;
+      currentTiltZ += (targetTiltZ - currentTiltZ) * 0.08;
+      cosmos.style.transform = `rotateX(${currentTiltX.toFixed(2)}deg) rotateZ(${currentTiltZ.toFixed(2)}deg)`;
+      requestAnimationFrame(updateCosmosTilt);
+    }
+    requestAnimationFrame(updateCosmosTilt);
+  }
 }
 
-// Lancement au chargement
-document.addEventListener("DOMContentLoaded", () => {
+// Initialisation de la modale de lecture des certificats
+function initialiser_modal_certificats() {
+  const modal = document.getElementById("modal_certificat");
+  const btnFermer = document.getElementById("modal_cert_fermer");
+  const btnFermerBas = document.getElementById("modal_btn_fermer");
+  const iframePdf = document.getElementById("modal_pdf_iframe");
+  const containerPdf = document.getElementById("modal_pdf_container");
+  const containerInfo = document.getElementById("modal_info_container");
+  const titreEl = document.getElementById("modal_cert_titre");
+  const emetteurEl = document.getElementById("modal_cert_emetteur");
+  const badgeEl = document.getElementById("modal_cert_badge");
+  const btnTelecharger = document.getElementById("modal_btn_telecharger");
+  const btnOuvrir = document.getElementById("modal_btn_ouvrir");
+  const quickOpen = document.getElementById("modal_quick_open");
+  const infoTitre = document.getElementById("modal_info_titre");
+  const infoDesc = document.getElementById("modal_info_desc");
+  const infoTags = document.getElementById("modal_info_tags");
+
+  if (!modal) return;
+
+  function fermerModal() {
+    modal.classList.remove("actif");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (iframePdf) iframePdf.src = "";
+  }
+
+  function ouvrirModal(carte) {
+    const title = carte.getAttribute("data-cert-title") || carte.querySelector(".cert_title")?.textContent.trim() || "Certification";
+    const issuer = carte.getAttribute("data-cert-issuer") || carte.querySelector(".cert_issuer")?.textContent.trim() || "";
+    const badge = carte.getAttribute("data-cert-badge") || carte.querySelector(".cert_badge")?.textContent.trim() || "Diplôme";
+    const rawPdfUrl = carte.getAttribute("data-cert-pdf") || (carte.getAttribute("href") && carte.getAttribute("href") !== "#" ? carte.getAttribute("href") : "");
+    const pdfUrl = rawPdfUrl ? encodeURI(rawPdfUrl) : "";
+    const desc = carte.getAttribute("data-cert-desc") || "Attestation et validation officielle des compétences.";
+    const tagsStr = carte.getAttribute("data-cert-tags") || "";
+
+    if (titreEl) titreEl.textContent = title;
+    if (emetteurEl) emetteurEl.textContent = issuer;
+    if (badgeEl) badgeEl.textContent = badge;
+
+    if (pdfUrl && pdfUrl.toLowerCase().includes(".pdf")) {
+      if (containerPdf) containerPdf.style.display = "flex";
+      if (containerInfo) containerInfo.style.display = "none";
+      if (iframePdf) iframePdf.src = pdfUrl + "#toolbar=1&navpanes=0";
+
+      if (quickOpen) {
+        quickOpen.href = pdfUrl;
+      }
+
+      if (btnTelecharger) {
+        btnTelecharger.style.display = "inline-flex";
+        btnTelecharger.href = pdfUrl;
+        btnTelecharger.setAttribute("download", title.replace(/[^a-zA-Z0-9_-]/g, "_") + ".pdf");
+      }
+      if (btnOuvrir) {
+        btnOuvrir.style.display = "inline-flex";
+        btnOuvrir.href = pdfUrl;
+      }
+    } else {
+      if (containerPdf) containerPdf.style.display = "none";
+      if (containerInfo) containerInfo.style.display = "flex";
+      if (infoTitre) infoTitre.textContent = title;
+      if (infoDesc) infoDesc.textContent = desc;
+
+      if (infoTags) {
+        infoTags.innerHTML = "";
+        if (tagsStr) {
+          tagsStr.split(",").forEach((tag) => {
+            const span = document.createElement("span");
+            span.className = "modal_info_tag";
+            span.textContent = tag.trim();
+            infoTags.appendChild(span);
+          });
+        }
+      }
+
+      if (btnTelecharger) btnTelecharger.style.display = "none";
+      if (btnOuvrir) {
+        const directHref = carte.getAttribute("href");
+        if (directHref && directHref !== "#") {
+          btnOuvrir.style.display = "inline-flex";
+          btnOuvrir.href = directHref;
+        } else {
+          btnOuvrir.style.display = "none";
+        }
+      }
+    }
+
+    modal.classList.add("actif");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  document.querySelectorAll(".cert_card").forEach((carte) => {
+    carte.addEventListener("click", (e) => {
+      e.preventDefault();
+      ouvrirModal(carte);
+    });
+  });
+
+  btnFermer?.addEventListener("click", fermerModal);
+  btnFermerBas?.addEventListener("click", fermerModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) fermerModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("actif")) {
+      fermerModal();
+    }
+  });
+}
+
+// Démarrage sécurisé au chargement
+function demarrerApplication() {
   initialiser_filtres_competences();
   initialiser_filtres_projets();
   lancer_animation_texte();
   initialiser_formulaire();
-  ajouterParticulesOrbite();
-});
+  initialiser_systeme_solaire_3d();
+  initialiser_modal_certificats();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", demarrerApplication);
+} else {
+  demarrerApplication();
+}
 
 // Nouveaux filtres compétences
 const filterBtns = document.querySelectorAll(".filter_btn_new");
