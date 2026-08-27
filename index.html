@@ -1923,6 +1923,146 @@
 
     
 
-    
+    <!-- MODALE LECTEUR DE CERTIFICAT -->
+    <div
+      class="modal_certificat_overlay"
+      id="modal_certificat"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="modal_cert_titre"
+    >
+      <div class="modal_certificat_conteneur">
+        <!-- En-tête -->
+        <div class="modal_cert_header">
+          <div class="modal_cert_header_info">
+            <span class="modal_cert_badge" id="modal_cert_badge">Certification</span>
+            <h3 class="modal_cert_titre" id="modal_cert_titre">Titre du certificat</h3>
+            <p class="modal_cert_emetteur" id="modal_cert_emetteur">Organisme émetteur</p>
+          </div>
+          <button
+            class="modal_cert_fermer"
+            id="modal_cert_fermer"
+            aria-label="Fermer la fenêtre"
+            title="Fermer (Échap)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Corps du lecteur -->
+        <div class="modal_cert_body">
+          <!-- Vue PDF pour certificats avec PDF -->
+          <div class="modal_pdf_wrapper" id="modal_pdf_container">
+            <div class="modal_pdf_topbar">
+              <div class="modal_pdf_status">
+                <span class="pdf_status_dot"></span>
+                <span>Document officiel vérifié • Format PDF</span>
+              </div>
+              <a href="#" id="modal_quick_open" target="_blank" rel="noopener noreferrer" class="modal_quick_link">
+                Ouvrir dans un nouvel onglet ↗
+              </a>
+            </div>
+            <div class="modal_pdf_frame_holder">
+              <iframe
+                id="modal_pdf_iframe"
+                src=""
+                title="Lecteur de document PDF"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Vue info pour certificats sans PDF -->
+          <div class="modal_info_wrapper" id="modal_info_container" style="display: none;">
+            <div class="modal_info_card">
+              <div class="modal_info_icon" id="modal_info_icon">
+                <img src="images/icons/certificate.svg" alt="" width="48" height="48" />
+              </div>
+              <h4 id="modal_info_titre">Détails de la certification</h4>
+              <p id="modal_info_desc">
+                Cette certification valide des compétences clés en développement et ingénierie logicielle.
+              </p>
+              <div class="modal_info_tags" id="modal_info_tags"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pied d'actions -->
+        <div class="modal_cert_footer">
+          <a
+            href="#"
+            id="modal_btn_telecharger"
+            class="modal_btn modal_btn_principal"
+            download
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Télécharger le certificat
+          </a>
+          <a
+            href="#"
+            id="modal_btn_ouvrir"
+            class="modal_btn modal_btn_secondaire"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            Ouvrir en plein écran
+          </a>
+          <button
+            type="button"
+            id="modal_btn_fermer"
+            class="modal_btn modal_btn_neutre"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIBLIOTHÈQUE D'ANIMATION ANIME.JS (V4) -->
+    <script src="anime.min.js"></script>
+    <!-- SCRIPT JS DU PORTFOLIO -->
+    <script src="script.js" defer></script>
   </body>
 </html>
