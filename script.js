@@ -341,9 +341,10 @@ function lancer_animation_texte() {
 
   el.style.borderRight = "2px solid currentColor";
   el.style.paddingRight = "3px";
-  el.style.display = "inline-block";
-  el.style.minWidth = "0px";
-  el.style.width = "auto";
+  el.style.display = "inline";
+  el.style.maxWidth = "100%";
+  el.style.overflowWrap = "break-word";
+  el.style.wordBreak = "break-word";
 
   const style_curseur = document.createElement("style");
   style_curseur.textContent = `
@@ -577,7 +578,11 @@ function initialiser_systeme_solaire_3d() {
     let r2 = 160;
     let r3 = 220;
 
-    if (w <= 480) {
+    if (w <= 360) {
+      r1 = 50;
+      r2 = 77;
+      r3 = 107;
+    } else if (w <= 480) {
       r1 = 57;
       r2 = 87;
       r3 = 120;
