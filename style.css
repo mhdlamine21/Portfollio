@@ -2005,6 +2005,12 @@ footer {
   font-size: 14px;
   color: var(--txt2);
 }
+.cert_header_row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
 .cert_filters {
   display: flex;
   flex-wrap: wrap;
@@ -2062,8 +2068,10 @@ footer {
   cursor: pointer;
   text-decoration: none;
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(12px);
   animation: certSlideIn 0.4s ease forwards;
+  width: 100%;
+  box-sizing: border-box;
 }
 .cert_card:nth-child(1) {
   animation-delay: 0.05s;
@@ -2086,7 +2094,7 @@ footer {
 @keyframes certSlideIn {
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 .cert_card:hover {
@@ -2124,6 +2132,8 @@ footer {
 }
 .cert_info {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 .cert_title {
   font-size: 14px;
@@ -3590,116 +3600,443 @@ footer {
   .sun_core img { width: 22px; height: 22px; }
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   CORRECTIFS RESPONSIVITE MOBILE — CENTRAGE, CADRAGE & ANTI-DEBORDEMENT
+   ══════════════════════════════════════════════════════════════════ */
 
-/* ══════════════════════════════════════════════════════
-   CORRECTIFS RESPONSIVITE MOBILE — centrage et debordement
-══════════════════════════════════════════════════════ */
-
-/* Anti-debordement global */
-html, body {
+/* Anti-debordement global absolu */
+html {
   max-width: 100%;
   overflow-x: hidden;
+  box-sizing: border-box;
+}
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  /* Conteneur — padding uniforme centré */
-  .conteneur {
-    padding: 0 16px;
+/* TABLETTES ET MOBILES (<= 968px) */
+@media (max-width: 968px) {
+  .competences_container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
   }
+}
 
-  /* Titre sections — centrage forcé */
+/* SMARTPHONES ET PETITS ECRANS (<= 768px) */
+@media (max-width: 768px) {
+  /* Supprimer les orbes et lueurs arrieres qui provoquent le decalage a droite */
+  .section_competences::before,
+  .section_apropos::before,
+  .section_apropos::after {
+    display: none !important;
+  }
+
+  /* Conteneur global */
+  .conteneur {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Titres de section centres et cadres */
   .titre_section {
     text-align: center;
     padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .etiquette_section {
     display: block;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .titre_section h2 {
+    text-align: center;
   }
 
-  /* Barre de navigation en mobile */
-  .nav_liens {
+  /* ══ SECTION COMPETENCES & CERTIFICATIONS ══ */
+  .section_competences {
+    padding: 60px 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .competences_container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .competences_left,
+  .competences_right {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 22px 16px !important;
+    box-sizing: border-box !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+  }
+
+  /* Filtres competences centres */
+  .competences_filters {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+  }
+
+  .filter_btn_new {
+    padding: 6px 14px !important;
+    font-size: 11.5px !important;
+    border-radius: 20px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* Grille competences — 1 seule colonne propre et centree */
+  .competences_grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    max-height: 480px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-right: 4px !important;
+  }
+
+  .competences_grid::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .skill_card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .skill_header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+  }
+
+  .skill_icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex-shrink: 0 !important;
+    border-radius: 12px !important;
+  }
+
+  .skill_icon img {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .skill_name {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .skill_stats {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 6px !important;
+    width: 100% !important;
+  }
+
+  .skill_percent {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+  }
+
+  .skill_label {
+    font-size: 10px !important;
+  }
+
+  /* ══ CERTIFICATIONS & DIPLOMES ══ */
+  .certifications_header {
+    text-align: center !important;
+    margin-bottom: 18px !important;
+    width: 100% !important;
+  }
+
+  .cert_header_row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+  }
+
+  .cert_header_row h3 {
+    font-size: 18px !important;
+    text-align: center !important;
+    margin: 0 !important;
+    font-family: 'Syne', sans-serif !important;
+  }
+
+  .cert_icon_circle {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .cert_circle_icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .certifications_header p {
+    font-size: 12px !important;
+    text-align: center !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+    color: var(--txt2) !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Filtres certifications centres */
+  .cert_filters {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cert_filter_btn {
+    padding: 6px 14px !important;
+    font-size: 11.5px !important;
+    border-radius: 20px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* Grille des certifications cadree et scrollable */
+  .certifications_grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-right: 4px !important;
+  }
+
+  .certifications_grid::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .cert_card {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .cert_icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex-shrink: 0 !important;
+    border-radius: 12px !important;
+  }
+
+  .cert_icon img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .cert_info {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .cert_title {
+    font-size: 12.5px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 3px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  .cert_issuer {
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+    display: block !important;
+  }
+
+  .cert_badge {
+    font-size: 9.5px !important;
+    padding: 3px 8px !important;
+    border-radius: 20px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .cert_arrow {
+    display: none !important;
+  }
+
+  /* ══ AUTRES SECTIONS (A PROPOS, CONTACT, HERO, FOOTER) ══ */
+  .apropos_timeline {
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* Grille contact — empêcher le débordement */
-  .grille_contact {
+  .stats_modernes {
     width: 100%;
-    box-sizing: border-box;
+    align-items: stretch;
   }
+
+  .grille_contact,
   .contact_infos,
   .carte_formulaire {
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* Compétences — empêcher débordement horizontal */
-  .section_competences .conteneur,
-  .grille_competences {
-    overflow-x: hidden;
-  }
-
-  /* Filtres — centrage sur mobile */
-  .filtres_projets,
-  .competences_filters,
-  .cert_filters {
+  .filtres_projets {
     justify-content: center;
     padding: 0 8px;
   }
 
-  /* Section projets — centrage */
-  .section_projets .titre_section {
-    text-align: center;
-  }
   .voir_tout {
     text-align: center;
     padding: 0 16px;
   }
 
-  /* Timeline — largeur 100% */
-  .apropos_timeline {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Stats — centrage */
-  .stats_modernes {
-    width: 100%;
-    align-items: stretch;
-  }
-
-  /* Footer centré */
   .pied_interieur {
     padding: 0 16px;
     box-sizing: border-box;
   }
 
-  /* Hero header — centrage complet */
   .hero_contenu {
     text-align: center;
     align-items: center;
     padding: 0 16px;
   }
+
   .hero_actions {
     justify-content: center;
     flex-wrap: wrap;
   }
+
   .hero_reseaux {
     justify-content: center;
   }
 }
 
+/* TRES PETITS ECRANS (<= 480px) */
 @media (max-width: 480px) {
   .conteneur {
     padding: 0 12px;
   }
+
   .titre_section h2 {
-    font-size: clamp(22px, 6vw, 32px);
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .competences_container {
+    padding: 0 10px !important;
+    gap: 20px !important;
+  }
+
+  .competences_left,
+  .competences_right {
+    padding: 18px 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .filter_btn_new,
+  .cert_filter_btn {
+    padding: 5px 11px !important;
+    font-size: 10.5px !important;
+  }
+
+  .skill_card {
+    padding: 10px 12px !important;
+  }
+
+  .cert_card {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+
+  .cert_title {
+    font-size: 11.8px !important;
+  }
+
+  .cert_icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .cert_icon_circle {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .cert_header_row h3 {
+    font-size: 16.5px !important;
   }
 }
