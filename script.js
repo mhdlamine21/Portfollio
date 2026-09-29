@@ -1208,3 +1208,207 @@ certFilterBtns.forEach((btn) => {
   init();
 })();
 
+/* ══════════════════════════════════════════════════════
+   SWITCHER VOTENOW (V1 vs V2)
+   ══════════════════════════════════════════════════════ */
+function basculerVoteNow(version) {
+  var b1 = document.getElementById("vbtn_v1");
+  var b2 = document.getElementById("vbtn_v2");
+  var desc = document.getElementById("votenow_desc");
+  var techs = document.getElementById("votenow_techs");
+
+  if (!b1 || !b2 || !desc || !techs) return;
+
+  if (version === "v1") {
+    b1.classList.add("actif");
+    b2.classList.remove("actif");
+    desc.textContent =
+      "Application de vote web interactive développée pour l'examen pratique de Développement Web 1 avec gestion de version GitLab.";
+    techs.innerHTML =
+      '<span class="tech_etiquette">HTML5</span><span class="tech_etiquette">CSS3</span><span class="tech_etiquette">JavaScript</span><span class="tech_etiquette">GitLab</span>';
+  } else {
+    b2.classList.add("actif");
+    b1.classList.remove("actif");
+    desc.textContent =
+      "Plateforme de vote électronique sécurisée développée en PHP & MySQL avec protection contre les fraudes et gestion stricte des sessions.";
+    techs.innerHTML =
+      '<span class="tech_etiquette">PHP</span><span class="tech_etiquette">MySQL</span><span class="tech_etiquette">Sécurité</span>';
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   MODALE DETAILS DE PROJET (CONTEXTES & DESCRIPTIONS)
+   ══════════════════════════════════════════════════════ */
+(function () {
+  var dataProjets = {
+    cv: {
+      badge: "Projet Académique — L2 S3",
+      titre: "Mon CV en ligne",
+      contexte: "Cours de Développement Web 1 • Semestre 3 Licence 2 Informatique",
+      desc: "Conception, structuration sémantique et mise en forme responsive d'un Curriculum Vitae en ligne. Réalisé comme devoir académique pour valider la maîtrise des technologies fondamentales du web (HTML5 moderne, CSS3 adaptatif et dynamisme JavaScript). Déployé sur GitHub Pages.",
+      tags: ["HTML5", "CSS3", "JavaScript"],
+      outils: ["GitHub Pages", "Responsive Design", "Git"],
+      lien: "https://mhdlamine21.github.io/CV--Lamine/"
+    },
+    bibliotech: {
+      badge: "Projet Académique — L2 S3",
+      titre: "BiblioTech",
+      contexte: "Cours de Bases de Données Relationnelles (BDR) • Semestre 3 Licence 2",
+      desc: "Modélisation relationnelle complète (MCD, MLD, normalisation 3NF) et développement d'un système de gestion de bibliothèque universitaire : catalogue d'ouvrages, gestion des abonnés, suivi des prêts, relances et statistiques. Projet collaboratif documenté avec la suite Google Workspace.",
+      tags: ["HTML5", "CSS3", "JavaScript", "MySQL", "SQL"],
+      outils: ["Google Docs", "Google Sheets", "Google Sites", "Google Slides", "PhpMyAdmin"],
+      lien: "https://drive.google.com/drive/folders/1VvykBnpclg-TdS8T_J0bPhU-JRSVrkG0?usp=drive_link"
+    },
+    votenow: {
+      badge: "Projet Académique — L2 S3 / S4",
+      titre: "VoteNow",
+      contexte: "Web 1 (S3 L2) ➔ Introduction à la Sécurité Informatique (S4 L2)",
+      desc: "Système de vote électronique ayant connu 2 phases clés : la Version 1 (V1) développée en HTML/CSS/JS lors d'un examen pratique de Web 1 avec gestion de code sur GitLab ; puis la Version 2 (V2) entièrement reconstruite en PHP/MySQL avec implémentation de mécanismes stricts de sécurité (hachage, prévention des injections SQL et CSRF, unicité du vote, intégrité du scrutin).",
+      tags: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "Sécurité Web"],
+      outils: ["GitLab", "Sessions sécurisées", "Anti-fraude"],
+      lien: "https://github.com/mhdlamine21/votenow"
+    },
+    university_systeme: {
+      badge: "Projet Académique — L2 S4",
+      titre: "University Système",
+      contexte: "Cours de Technologies XML • Semestre 4 Licence 2 Informatique",
+      desc: "Projet de référence sur le sujet : 'XML et les Architectures Orientées Services : SOAP, WSDL, et l'Interopérabilité des services'. Conception de schémas XSD, manipulation de flux XML, implémentation de Web Services SOAP avec contrats WSDL et communication inter-langages (Java, Python, PHP) pour une plateforme universitaire unifiée.",
+      tags: ["XML", "Java", "Python", "PHP", "SOAP", "WSDL", "XSD"],
+      outils: ["Web Services", "Interopérabilité SOA", "Schémas XML"],
+      lien: "https://github.com/mhdlamine21/University_syteme"
+    },
+    univ_scheduler: {
+      badge: "Projet Académique — L2 S4",
+      titre: "Univ-Scheduler",
+      contexte: "Cours de Programmation Orientée Objet 1 (POO 1) • Semestre 4 Licence 2",
+      desc: "Application desktop conçue pour résoudre le casse-tête de la planification universitaire. Intègre un algorithme de détection et résolution de conflits de salles et d'enseignants, la gestion des capacités, l'occupation en temps réel et une interface graphique fluide réalisée avec JavaFX et SQLite.",
+      tags: ["Java", "JavaFX", "SQLite", "JDBC", "POO Avancée"],
+      outils: ["Algorithmes d'ordonnancement", "Scene Builder", "Architecture MVC"],
+      lien: "https://github.com/mhdlamine21/Univ-Scheduler"
+    },
+    etontine: {
+      badge: "Projet Académique — L2 S4",
+      titre: "E-Tontine",
+      contexte: "Cours de Développement Web 2 • Semestre 4 Licence 2 Informatique",
+      desc: "Digitalisation complète du système traditionnel de tontine financière africaine. Permet la constitution de groupes, le suivi rigoureux des cotisations périodiques, l'attribution automatisée et transparente des cagnottes, avec tableau de bord administrateur et historisation des versements.",
+      tags: ["PHP", "MySQL", "Bootstrap", "JavaScript", "Architecture MVC"],
+      outils: ["Gestion des cagnottes", "Transactions sécurisées", "Responsive"],
+      lien: "https://github.com/mhdlamine21/E-tontine"
+    },
+    mywallet: {
+      badge: "Projet Académique & Avancé — L2 S4",
+      titre: "My Wallet",
+      contexte: "Inspiré de l'examen d'Analyse & Conception de Systèmes Orientés Objets (ACSOO)",
+      desc: "Application robuste de portefeuille financier développée en Java avec Spring Boot. Comprend la gestion multi-comptes, les dépôts, retraits et virements inter-utilisateurs avec persistance transactionnelle Spring Data JPA, validation des règles métier strictes et exposition d'une API REST.",
+      tags: ["Spring Boot", "Java", "JPA / Hibernate", "MySQL", "API REST"],
+      outils: ["Maven", "Spring Data", "Transactions ACID", "Postman"],
+      lien: "https://github.com/mhdlamine21"
+    },
+    voicelingo: {
+      badge: "Projet Personnel & IA",
+      titre: "VoiceLingo",
+      contexte: "Initiative personnelle d'accessibilité et de traduction vidéo",
+      desc: "Application d'ingénierie logicielle née d'un besoin concret : traduire et doubler des contenus vidéo techniques et académiques pour fluidifier l'apprentissage. Intègre le découpage audio via FFmpeg, la reconnaissance vocale automatisée (SpeechRecognition), la traduction assistée par IA et la synthèse vocale fluide (gTTS).",
+      tags: ["Python", "FFmpeg", "SpeechRecognition", "gTTS", "Intelligence Artificielle"],
+      outils: ["Traitement du Signal Audio", "Sous-titrage dynamique", "Tkinter"],
+      lien: "https://github.com/mhdlamine21/VoiceLingo"
+    },
+    syloct: {
+      badge: "Projet Académique — L3 S5",
+      titre: "SyLOC-T",
+      contexte: "Cours de Bases de Données Avancées (BDA) • Semestre 5 Licence 3",
+      desc: "Système de géolocalisation et d'optimisation du transport universitaire pour le CROUS de Thiès. Combine un backend performant en Django REST Framework, une base de données relationnelle MySQL, et une interface réactive en React. Conçu selon des méthodologies agiles avec suivi Jira et Monday.com.",
+      tags: ["React", "Python", "Django", "Django REST Framework", "MySQL"],
+      outils: ["Monday.com", "Jira", "Ngrok", "Google Colab", "SQLite"],
+      lien: "https://github.com/mhdlamine21/SyLOC-T"
+    },
+    codezone: {
+      badge: "Projet Communautaire & Personnel",
+      titre: "CodeZone (CodeZoneSN)",
+      contexte: "Plateforme communautaire pour étudiants en informatique au Sénégal",
+      desc: "Espace personnel et communautaire conçu pour vulgariser l'informatique, partager des retours d'expérience, des cours universitaires, des fiches pratiques et de la veille technologique pour la jeunesse sénégalaise et africaine passionnée de développement logiciel.",
+      tags: ["Plateforme Tech", "Blog Étudiant", "Veille Technologique", "Communauté"],
+      outils: ["Partage Open Source", "Pédagogie", "Mentorat"],
+      lien: "#"
+    }
+  };
+
+  var overlay = document.getElementById("modal_projet");
+  var btnFermer = document.getElementById("modal_proj_fermer");
+  var btnFermerBas = document.getElementById("modal_proj_btn_fermer");
+
+  if (!overlay) return;
+
+  function ouvrir(id) {
+    var p = dataProjets[id];
+    if (!p) return;
+
+    document.getElementById("modal_proj_badge").textContent = p.badge;
+    document.getElementById("modal_proj_titre").textContent = p.titre;
+    document.getElementById("modal_proj_contexte").textContent = p.contexte;
+    document.getElementById("modal_proj_desc").textContent = p.desc;
+
+    var tagsCont = document.getElementById("modal_proj_tags");
+    tagsCont.innerHTML = "";
+    p.tags.forEach(function (t) {
+      var span = document.createElement("span");
+      span.className = "modal_proj_tag";
+      span.textContent = t;
+      tagsCont.appendChild(span);
+    });
+
+    var outilsSec = document.getElementById("modal_proj_outils_sec");
+    var outilsCont = document.getElementById("modal_proj_outils");
+    outilsCont.innerHTML = "";
+    if (p.outils && p.outils.length > 0) {
+      outilsSec.style.display = "flex";
+      p.outils.forEach(function (o) {
+        var span = document.createElement("span");
+        span.className = "modal_proj_outil";
+        span.textContent = o;
+        outilsCont.appendChild(span);
+      });
+    } else {
+      outilsSec.style.display = "none";
+    }
+
+    var lienBtn = document.getElementById("modal_proj_lien");
+    if (p.lien && p.lien !== "#") {
+      lienBtn.href = p.lien;
+      lienBtn.style.display = "inline-flex";
+    } else {
+      lienBtn.style.display = "none";
+    }
+
+    overlay.classList.add("actif");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function fermer() {
+    overlay.classList.remove("actif");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".btn_projet_details").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var id = btn.getAttribute("data-projet");
+      ouvrir(id);
+    });
+  });
+
+  if (btnFermer) btnFermer.addEventListener("click", fermer);
+  if (btnFermerBas) btnFermerBas.addEventListener("click", fermer);
+
+  overlay.addEventListener("click", function (e) {
+    if (e.target === overlay) fermer();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && overlay.classList.contains("actif")) {
+      fermer();
+    }
+  });
+})();

@@ -1921,7 +1921,91 @@
       </svg>
     </button>
 
-    
+    <!-- MODALE DETAILS PROJET -->
+    <div
+      class="modal_projet_overlay"
+      id="modal_projet"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="modal_proj_titre"
+    >
+      <div class="modal_projet_conteneur">
+        <div class="modal_proj_header">
+          <div class="modal_proj_header_info">
+            <span class="modal_proj_badge" id="modal_proj_badge">Projet</span>
+            <h3 class="modal_proj_titre" id="modal_proj_titre">Titre du projet</h3>
+            <p class="modal_proj_contexte" id="modal_proj_contexte">Contexte</p>
+          </div>
+          <button
+            class="modal_proj_fermer"
+            id="modal_proj_fermer"
+            aria-label="Fermer la fenêtre"
+            title="Fermer (Échap)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal_proj_body">
+          <div class="modal_proj_section">
+            <h4 class="modal_proj_soustitre">Présentation & Enjeux</h4>
+            <p id="modal_proj_desc" class="modal_proj_text"></p>
+          </div>
+          <div class="modal_proj_section">
+            <h4 class="modal_proj_soustitre">Technologies Clés</h4>
+            <div class="modal_proj_tags" id="modal_proj_tags"></div>
+          </div>
+          <div class="modal_proj_section" id="modal_proj_outils_sec">
+            <h4 class="modal_proj_soustitre">Outils Collaboratifs & Environnement</h4>
+            <div class="modal_proj_outils" id="modal_proj_outils"></div>
+          </div>
+        </div>
+        <div class="modal_proj_footer">
+          <a
+            href="#"
+            id="modal_proj_lien"
+            class="modal_btn modal_btn_principal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            Consulter le projet
+          </a>
+          <button
+            type="button"
+            id="modal_proj_btn_fermer"
+            class="modal_btn modal_btn_neutre"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- MODALE LECTEUR DE CERTIFICAT -->
     <div
