@@ -1,33 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <defs>
-    <linearGradient id="vl_bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#4f46e5"/>
-    </linearGradient>
-    <radialGradient id="vl_glow" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="transparent"/>
+    <radialGradient id="vl_globe_bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0f7f7"/>
+      <stop offset="100%" stop-color="#b2eaea"/>
     </radialGradient>
+    <linearGradient id="vl_wave_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ab5b5"/>
+      <stop offset="100%" stop-color="#1a8f9e"/>
+    </linearGradient>
   </defs>
-  <rect width="200" height="200" rx="32" fill="url(#vl_bg)"/>
-  <rect width="200" height="200" rx="32" fill="url(#vl_glow)"/>
-  <!-- Microphone body -->
-  <rect x="82" y="42" width="36" height="60" rx="18" fill="white" opacity="0.95"/>
-  <!-- Mic grille lines -->
-  <line x1="85" y1="62" x2="115" y2="62" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
-  <line x1="85" y1="72" x2="115" y2="72" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
-  <line x1="85" y1="82" x2="115" y2="82" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
-  <!-- Mic stand arc -->
-  <path d="M62 100 Q62 138 100 138 Q138 138 138 100" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
-  <!-- Stand base -->
-  <line x1="100" y1="138" x2="100" y2="155" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
-  <line x1="76" y1="155" x2="124" y2="155" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
-  <!-- Sound waves (left) -->
-  <path d="M50 90 Q44 100 50 110" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-  <path d="M40 82 Q30 100 40 118" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-  <!-- Sound waves (right) -->
-  <path d="M150 90 Q156 100 150 110" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-  <path d="M160 82 Q170 100 160 118" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-  <!-- Brand -->
-  <text x="100" y="185" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">VoiceLingo</text>
+
+  <!-- White background rounded square -->
+  <rect width="200" height="200" rx="28" fill="white"/>
+
+  <!-- Globe outer circle -->
+  <circle cx="100" cy="88" r="62" fill="url(#vl_globe_bg)" stroke="#2ab5b5" stroke-width="2.5"/>
+
+  <!-- Globe meridian lines (vertical arcs) -->
+  <ellipse cx="100" cy="88" rx="18" ry="62" fill="none" stroke="#2ab5b5" stroke-width="1.5" opacity="0.6"/>
+  <ellipse cx="100" cy="88" rx="42" ry="62" fill="none" stroke="#2ab5b5" stroke-width="1" opacity="0.4"/>
+
+  <!-- Globe latitude lines (horizontal) -->
+  <line x1="38" y1="64" x2="162" y2="64" stroke="#2ab5b5" stroke-width="1.2" opacity="0.5"/>
+  <line x1="38" y1="88" x2="162" y2="88" stroke="#2ab5b5" stroke-width="1.5" opacity="0.6"/>
+  <line x1="38" y1="112" x2="162" y2="112" stroke="#2ab5b5" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Sound wave bars in center (overlaid on globe) -->
+  <g fill="url(#vl_wave_grad)" opacity="0.92">
+    <!-- Left bars (decreasing) -->
+    <rect x="64" y="78" width="7" height="20" rx="3.5"/>
+    <rect x="74" y="70" width="7" height="36" rx="3.5"/>
+    <!-- Center tall bar -->
+    <rect x="84" y="62" width="7" height="52" rx="3.5"/>
+    <!-- Microphone dot or peak -->
+    <rect x="94" y="72" width="7" height="32" rx="3.5"/>
+    <!-- Right bars (increasing) -->
+    <rect x="104" y="62" width="7" height="52" rx="3.5"/>
+    <rect x="114" y="70" width="7" height="36" rx="3.5"/>
+    <rect x="124" y="78" width="7" height="20" rx="3.5"/>
+  </g>
+
+  <!-- Brand name -->
+  <text x="100" y="172" font-family="'Segoe UI', Poppins, Arial, sans-serif" font-size="17" font-weight="700" fill="#1a8f9e" text-anchor="middle" letter-spacing="0.5">Voicelingo</text>
+
+  <!-- Tagline -->
+  <text x="100" y="186" font-family="'Segoe UI', Arial, sans-serif" font-size="7.5" font-weight="400" fill="#2ab5b5" text-anchor="middle" letter-spacing="1.5">VOICE · TRANSLATE · CONNECT</text>
 </svg>
