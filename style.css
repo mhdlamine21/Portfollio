@@ -98,6 +98,8 @@ ul {
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.5s;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 .orbe_un {
   width: 600px;
@@ -378,7 +380,7 @@ footer {
 .section_hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 120px 24px 80px;
   background: var(--ap);
@@ -402,7 +404,6 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  overflow: hidden;
 }
 .hero_badge_wrapper {
   display: flex;
@@ -422,9 +423,6 @@ footer {
 }
 .hero_gauche {
   text-align: center;
-  max-width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 .hero_bonjour {
   font-size: 18px;
@@ -435,10 +433,10 @@ footer {
 }
 .hero_nom {
   font-family: "Syne", sans-serif;
-  font-size: clamp(20px, 7vw, 72px);
+  font-size: clamp(42px, 6vw, 72px);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -1px;
+  line-height: 1.1;
+  letter-spacing: -2px;
   margin-bottom: 20px;
   background: var(--deg);
   -webkit-background-clip: text;
@@ -446,11 +444,6 @@ footer {
   background-clip: text;
   background-size: 200%;
   animation: glisser_deg 5s ease-in-out infinite;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  width: 100%;
-  max-width: 100%;
 }
 @keyframes glisser_deg {
   0%,
@@ -471,8 +464,6 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 6px;
-  max-width: 100%;
-  overflow: hidden;
 }
 .hero_universite {
   font-size: 14px;
@@ -485,12 +476,9 @@ footer {
   color: var(--txt2);
   line-height: 1.7;
   max-width: 500px;
-  width: 100%;
   margin-bottom: 32px;
   margin-left: auto;
   margin-right: auto;
-  overflow-wrap: break-word;
-  word-break: break-word;
 }
 .hero_boutons {
   display: flex;
@@ -593,7 +581,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: auto;
+  min-height: 520px;
 }
 .solar_3d_stage {
   position: relative;
@@ -685,10 +673,9 @@ footer {
 [data-theme="sombre"] .sun_core {
   background: radial-gradient(circle at 35% 35%, #ecfeff 0%, #06b6d4 40%, #0284c7 75%, #0369a1 100%);
   box-shadow:
-    0 0 30px #06b6d4,
-    0 0 65px rgba(6, 182, 212, 0.85),
-    0 0 110px rgba(59, 130, 246, 0.5),
-    inset 0 0 18px rgba(255, 255, 255, 0.9);
+    0 0 24px #06b6d4,
+    0 0 45px rgba(6, 182, 212, 0.65),
+    inset 0 0 16px rgba(255, 255, 255, 0.85);
 }
 [data-theme="sombre"] .sun_core img {
   filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(6, 182, 212, 0.9));
@@ -819,22 +806,21 @@ footer {
 }
 
 [data-theme="sombre"] .planet_3d {
-  background: rgba(11, 19, 41, 0.9);
-  border-color: rgba(6, 182, 212, 0.4);
+  background: #0f172a;
+  border-color: rgba(6, 182, 212, 0.45);
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.6),
-    0 0 18px rgba(6, 182, 212, 0.25);
-  backdrop-filter: blur(8px);
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(6, 182, 212, 0.22);
 }
 [data-theme="sombre"] .planet_3d img {
   filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(6, 182, 212, 0.6));
 }
 [data-theme="sombre"] .planet_3d:hover {
   border-color: #06b6d4;
-  background: rgba(15, 23, 42, 0.95);
+  background: #1e293b;
   box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.7),
-    0 0 35px rgba(6, 182, 212, 0.8);
+    0 10px 26px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(6, 182, 212, 0.6);
 }
 
 /* Points lumineux orbitaux (sur les anneaux) */
@@ -880,15 +866,11 @@ footer {
 
 [data-theme="sombre"] .orbit_luminous_point {
   background: #06b6d4;
-  box-shadow:
-    0 0 8px #06b6d4,
-    0 0 18px rgba(6, 182, 212, 0.9);
+  box-shadow: 0 0 6px #06b6d4;
 }
 [data-theme="sombre"] .dust_particle {
   background: #38bdf8;
-  box-shadow:
-    0 0 6px #38bdf8,
-    0 0 12px rgba(56, 189, 248, 0.75);
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.6);
 }
 
 .hero_gauche {
@@ -1001,11 +983,10 @@ footer {
   display: inline-block;
 }
 #texte_anime {
-  display: inline;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  min-width: 220px;
+  text-align: left;
 }
 
 /* RESPONSIVE HERO */
@@ -1951,6 +1932,9 @@ footer {
 }
 [data-theme="sombre"] .skill_icon {
   background: rgba(6, 182, 212, 0.15);
+}
+[data-theme="sombre"] .icone_invert_dark img {
+  filter: brightness(0) invert(1);
 }
 .skill_card:hover .skill_icon {
   transform: scale(1.05) rotate(-3deg);
@@ -3409,26 +3393,13 @@ footer {
   display: block;
 }
 
-/* ============================================
-   RESPONSIVE HERO - TABLETTE (max 968px)
-   ============================================ */
 @media (max-width: 968px) {
-  .section_hero {
-    min-height: auto;
-    padding: 100px 20px 40px;
-    align-items: flex-start;
-  }
   .hero_container {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 40px;
   }
   .hero_gauche {
     text-align: center;
-  }
-  .hero_droite {
-    min-height: auto;
-    height: 420px;
-    margin: 0 auto;
   }
   .solar_3d_stage {
     width: 420px;
@@ -3439,38 +3410,7 @@ footer {
   .ring_3 { width: 360px; height: 360px; }
 }
 
-/* ============================================
-   RESPONSIVE HERO - MOBILE (max 768px)
-   ============================================ */
 @media (max-width: 768px) {
-  .section_hero {
-    min-height: auto;
-    padding: 86px 16px 32px;
-    align-items: flex-start;
-  }
-  .hero_container {
-    gap: 18px;
-  }
-  .hero_nom {
-    font-size: 36px;
-    margin-bottom: 12px;
-  }
-  .hero_bio {
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-  .hero_boutons {
-    margin-bottom: 18px;
-    gap: 10px;
-  }
-  .hero_reseaux_wrapper {
-    margin-bottom: 0;
-  }
-  .hero_droite {
-    min-height: auto;
-    height: 320px;
-    margin: 0 auto;
-  }
   .solar_3d_stage {
     width: 320px;
     height: 320px;
@@ -3489,24 +3429,24 @@ footer {
   .sun_core { width: 56px; height: 56px; }
   .sun_core img { width: 26px; height: 26px; }
 
-  .section_apropos { padding: 40px 0 50px; }
-  .section_competences,
-  .section_projets,
-  .section_contact { padding: 50px 0; }
-  .titre_section { margin-bottom: 28px; }
-
   .modal_certificat_conteneur {
     max-height: 94vh;
     border-radius: 20px;
   }
-  .modal_cert_header { padding: 16px 20px; }
-  .modal_cert_titre { font-size: 17px; }
+  .modal_cert_header {
+    padding: 16px 20px;
+  }
+  .modal_cert_titre {
+    font-size: 17px;
+  }
   .modal_cert_body {
     min-height: 360px;
     max-height: calc(94vh - 150px);
   }
   #modal_pdf_iframe,
-  .modal_pdf_frame_holder { min-height: 360px; }
+  .modal_pdf_frame_holder {
+    min-height: 360px;
+  }
   .modal_cert_footer {
     padding: 14px 20px;
     justify-content: center;
@@ -3517,60 +3457,7 @@ footer {
   }
 }
 
-/* ============================================
-   RESPONSIVE HERO - PETIT MOBILE (max 480px)
-   ============================================ */
 @media (max-width: 480px) {
-  .section_hero {
-    min-height: auto;
-    padding: 76px 10px 24px;
-    align-items: flex-start;
-  }
-  .hero_container {
-    gap: 12px;
-  }
-  .hero_badge_wrapper {
-    margin-bottom: 14px;
-  }
-  .hero_nom {
-    font-size: 26px;
-    letter-spacing: -0.5px;
-    margin-bottom: 10px;
-  }
-  .hero_role {
-    font-size: 15px;
-    margin-bottom: 6px;
-  }
-  .hero_universite {
-    font-size: 13px;
-    margin-bottom: 14px;
-  }
-  .hero_bio {
-    margin-bottom: 16px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .hero_boutons {
-    margin-bottom: 16px;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
-  .bouton_principal,
-  .bouton_secondaire {
-    width: 100%;
-    justify-content: center;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-  .hero_reseaux_wrapper {
-    margin-bottom: 0;
-  }
-  .hero_droite {
-    min-height: auto;
-    height: 270px;
-    margin: 0 auto;
-  }
   .solar_3d_stage {
     width: 270px;
     height: 270px;
@@ -3588,65 +3475,5 @@ footer {
   .planet_3d img { width: 16px; height: 16px; }
   .sun_core { width: 48px; height: 48px; }
   .sun_core img { width: 22px; height: 22px; }
-
-  .section_apropos { padding: 30px 0 36px; }
-  .section_competences,
-  .section_projets,
-  .section_contact { padding: 36px 0; }
-  .titre_section { margin-bottom: 20px; }
-}
-
-/* ============================================
-   RESPONSIVE HERO - TRES PETIT (max 360px)
-   ============================================ */
-@media (max-width: 360px) {
-  .section_hero {
-    padding: 68px 10px 20px;
-  }
-  .hero_container {
-    gap: 10px;
-  }
-  .hero_nom {
-    font-size: clamp(24px, 7.5vw, 32px);
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-  }
-  .hero_role {
-    font-size: 13px;
-    margin-bottom: 5px;
-  }
-  .hero_universite {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-  .hero_bio {
-    font-size: 12.5px;
-    margin-bottom: 14px;
-    line-height: 1.55;
-  }
-  .hero_boutons {
-    margin-bottom: 14px;
-    gap: 6px;
-  }
-  .bouton_principal,
-  .bouton_secondaire {
-    padding: 9px 14px;
-    font-size: 12px;
-  }
-  .hero_bonjour {
-    font-size: 14px;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-  .hero_droite {
-    height: 240px;
-  }
-  .solar_3d_stage {
-    width: 240px;
-    height: 240px;
-  }
-  .ring_1 { width: 100px; height: 100px; }
-  .ring_2 { width: 155px; height: 155px; }
-  .ring_3 { width: 215px; height: 215px; }
 }
 

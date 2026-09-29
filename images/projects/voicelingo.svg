@@ -1,10 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <defs>
-    <linearGradient id="g_VL" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f97316"/>
-      <stop offset="100%" stop-color="#eab308"/>
+    <linearGradient id="vl_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
     </linearGradient>
+    <radialGradient id="vl_glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
   </defs>
-  <rect width="200" height="200" rx="36" fill="url(#g_VL)"/>
-  <text x="100" y="120" font-family="Arial,sans-serif" font-size="80" font-weight="900" fill="white" text-anchor="middle" opacity="0.9">VL</text>
+  <rect width="200" height="200" rx="32" fill="url(#vl_bg)"/>
+  <rect width="200" height="200" rx="32" fill="url(#vl_glow)"/>
+  <!-- Microphone body -->
+  <rect x="82" y="42" width="36" height="60" rx="18" fill="white" opacity="0.95"/>
+  <!-- Mic grille lines -->
+  <line x1="85" y1="62" x2="115" y2="62" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
+  <line x1="85" y1="72" x2="115" y2="72" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
+  <line x1="85" y1="82" x2="115" y2="82" stroke="#7c3aed" stroke-width="2" opacity="0.5"/>
+  <!-- Mic stand arc -->
+  <path d="M62 100 Q62 138 100 138 Q138 138 138 100" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <!-- Stand base -->
+  <line x1="100" y1="138" x2="100" y2="155" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <line x1="76" y1="155" x2="124" y2="155" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <!-- Sound waves (left) -->
+  <path d="M50 90 Q44 100 50 110" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M40 82 Q30 100 40 118" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  <!-- Sound waves (right) -->
+  <path d="M150 90 Q156 100 150 110" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M160 82 Q170 100 160 118" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  <!-- Brand -->
+  <text x="100" y="185" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">VoiceLingo</text>
 </svg>

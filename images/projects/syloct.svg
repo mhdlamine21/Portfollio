@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 470" width="400" height="470">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap');
+      .syloct-navy { fill: #1b2a4e; }
+      .syloct-gold { fill: #c99a3d; }
+      .syloct-word { font-family: 'Poppins', 'Trebuchet MS', 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- ============ ICONE ============ -->
+  <g id="icone">
+    <!-- Toit - grand chevron exterieur -->
+    <path class="syloct-navy" d="M 90,145 L 200,58 L 310,145 L 310,122 L 200,35 L 90,122 Z"/>
+    <!-- Toit - petit chevron interieur (effet 2 niveaux) -->
+    <path class="syloct-navy" d="M 118,168 L 200,103 L 282,168 L 282,148 L 200,83 L 118,148 Z"/>
+
+    <!-- Pilier gauche -->
+    <path class="syloct-navy" d="M 118,168 L 152,168 L 152,320 L 118,320 Z"/>
+    <!-- Pilier droit -->
+    <path class="syloct-navy" d="M 248,168 L 282,168 L 282,320 L 248,320 Z"/>
+
+    <!-- Fleche / clef doree -->
+    <path class="syloct-gold" d="M 200,110 L 250,168 L 222,168 L 222,255 L 178,255 L 178,168 L 150,168 Z"/>
+
+    <!-- Trou de serrure -->
+    <circle class="syloct-navy" cx="200" cy="282" r="15"/>
+    <path class="syloct-navy" d="M 190,290 L 210,290 L 216,320 L 184,320 Z"/>
+  </g>
+
+  <!-- ============ TEXTE ============ -->
+  <text x="200" y="392" text-anchor="middle" class="syloct-navy syloct-word" font-weight="600" font-size="64" letter-spacing="1">
+    SyLOC-T
+  </text>
+  <text x="200" y="426" text-anchor="middle" class="syloct-navy syloct-word" font-weight="400" font-size="19" letter-spacing="0.8">
+    Système de gestion des Locaux
+  </text>
+  <text x="200" y="450" text-anchor="middle" class="syloct-navy syloct-word" font-weight="400" font-size="19" letter-spacing="0.8">
+    du CROUS de Thiès
+  </text>
+</svg>

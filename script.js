@@ -23,6 +23,16 @@ function basculer_theme() {
   const nouveau = html.dataset.theme === "clair" ? "sombre" : "clair";
   html.dataset.theme = nouveau;
   localStorage.setItem("theme", nouveau);
+
+  const btnTheme = document.getElementById("bouton_theme");
+  if (btnTheme && window.anime && typeof window.anime.animate === "function") {
+    window.anime.animate(btnTheme, {
+      rotate: nouveau === "sombre" ? [0, 360] : [360, 0],
+      scale: [0.85, 1.12, 1],
+      duration: 500,
+      ease: "outBack(2)",
+    });
+  }
 }
 
 // Menu mobile
@@ -382,34 +392,75 @@ function lancer_animation_texte() {
   setTimeout(taper, 800);
 }
 
-// Formulaire de contact
+// Formulaire de contact sécurisé
 function initialiser_formulaire() {
   const formulaire = document.getElementById("formulaire_contact");
   const msg_succes = document.getElementById("message_succes");
   const msg_error = document.getElementById("message_error");
   const btn_envoyer = document.getElementById("bouton_envoyer");
+  let dernierEnvoi = 0;
 
-  // Fonction de validation
+  // Détection des tentatives d'injections (XSS, balises HTML, SQLi basique)
+  function contientInjection(texte) {
+    if (typeof texte !== "string") return false;
+    const motifsSuspects = [
+      /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+      /<[a-z\d]+(?:\s+[^>]*?)?(?:>|$)/gi,
+      /javascript:/gi,
+      /vbscript:/gi,
+      /data:text\/html/gi,
+      /on(?:load|error|click|mouseover|focus|blur|change|submit)\s*=/gi,
+      /\b(?:select|union|insert|delete|drop|update|exec|declare)\b\s+.*\b(?:from|into|table|database)\b/gi,
+      /--[\s\r\n]|;\s*--/g,
+    ];
+    return motifsSuspects.some((regex) => regex.test(texte));
+  }
+
+  // Détection des textes répétitifs / spam
+  function estSpam(texte) {
+    // Caractère répété plus de 15 fois d'affilée
+    if (/(.)\1{15,}/.test(texte)) return true;
+    return false;
+  }
+
+  // Fonction de validation rigoureuse
   function validerChamp(champ, type) {
     const valeur = champ.value.trim();
     let valide = true;
     let message = "";
 
-    if (type === "nom") {
+    // Test d'injection préalable
+    if (contientInjection(valeur)) {
+      message = "Caractères ou balises non autorisés détectés";
+      valide = false;
+    } else if (estSpam(valeur)) {
+      message = "Saisie invalide ou répétitive";
+      valide = false;
+    } else if (type === "nom") {
+      const regexNom = /^[a-zA-ZÀ-ÿ\s'\-]{2,70}$/;
       if (valeur === "") {
         message = "Le nom est requis";
         valide = false;
       } else if (valeur.length < 2) {
         message = "Nom trop court (minimum 2 caractères)";
         valide = false;
+      } else if (valeur.length > 70) {
+        message = "Nom trop long (maximum 70 caractères)";
+        valide = false;
+      } else if (!regexNom.test(valeur)) {
+        message = "Le nom ne doit comporter que des lettres";
+        valide = false;
       }
     } else if (type === "email") {
-      const regexEmail = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+      const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (valeur === "") {
         message = "L'email est requis";
         valide = false;
+      } else if (valeur.length > 100) {
+        message = "Email trop long (maximum 100 caractères)";
+        valide = false;
       } else if (!regexEmail.test(valeur)) {
-        message = "Email invalide (ex: nom@domaine.com)";
+        message = "Format d'email invalide (ex: nom@domaine.com)";
         valide = false;
       }
     } else if (type === "objet") {
@@ -417,7 +468,10 @@ function initialiser_formulaire() {
         message = "L'objet est requis";
         valide = false;
       } else if (valeur.length < 3) {
-        message = "Objet trop court";
+        message = "Objet trop court (minimum 3 caractères)";
+        valide = false;
+      } else if (valeur.length > 120) {
+        message = "Objet trop long (maximum 120 caractères)";
         valide = false;
       }
     } else if (type === "message") {
@@ -426,6 +480,9 @@ function initialiser_formulaire() {
         valide = false;
       } else if (valeur.length < 10) {
         message = "Message trop court (minimum 10 caractères)";
+        valide = false;
+      } else if (valeur.length > 3000) {
+        message = "Message trop long (maximum 3000 caractères)";
         valide = false;
       }
     }
@@ -467,19 +524,32 @@ function initialiser_formulaire() {
       validerChamp(champMessage, "message"),
     );
 
-  // Submission avec Formspree
+  // Soumission sécurisée avec Formspree
   formulaire?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Validation
+    // Protection anti-flood (cooldown 10s)
+    const maintenant = Date.now();
+    if (maintenant - dernierEnvoi < 10000) {
+      const attente = Math.ceil((10000 - (maintenant - dernierEnvoi)) / 1000);
+      if (msg_error) {
+        msg_error.textContent = `Veuillez patienter ${attente}s avant d'envoyer un autre message.`;
+        msg_error.classList.add("visible");
+        setTimeout(() => msg_error.classList.remove("visible"), 3000);
+      }
+      return;
+    }
+
+    // Validation complète de tous les champs
     const nomValide = validerChamp(champNom, "nom");
     const emailValide = validerChamp(champEmail, "email");
     const objetValide = validerChamp(champObjet, "objet");
     const messageValide = validerChamp(champMessage, "message");
 
-    // Honeypot
+    // Honeypot anti-bot
     const honeypot = document.getElementById("honeypot");
-    if (honeypot && honeypot.value !== "") {
+    if (honeypot && honeypot.value.trim() !== "") {
+      // Simulation silencieuse pour tromper le bot
       msg_succes?.classList.add("visible");
       formulaire.reset();
       setTimeout(() => msg_succes?.classList.remove("visible"), 3000);
@@ -487,21 +557,31 @@ function initialiser_formulaire() {
     }
 
     if (!nomValide || !emailValide || !objetValide || !messageValide) {
-      msg_error?.classList.add("visible");
-      setTimeout(() => msg_error?.classList.remove("visible"), 3000);
+      if (msg_error) {
+        msg_error.textContent = "Veuillez corriger les champs invalides avant d'envoyer.";
+        msg_error.classList.add("visible");
+        setTimeout(() => msg_error.classList.remove("visible"), 3500);
+      }
       return;
     }
 
     if (!btn_envoyer) return;
 
     btn_envoyer.disabled = true;
-    btn_envoyer.innerHTML = `⏳ Envoi en cours...`;
+    btn_envoyer.innerHTML = `⏳ Envoi sécurisé...`;
 
-    const formData = new FormData(formulaire);
-    formData.append(
-      "_subject",
-      champObjet?.value.trim() || "Nouveau message du portfolio",
-    );
+    // Nettoyage et assainissement des entrées
+    const nomSain = echapperHTML(champNom.value.trim());
+    const emailSain = champEmail.value.trim();
+    const objetSain = echapperHTML(champObjet.value.trim());
+    const messageSain = echapperHTML(champMessage.value.trim());
+
+    const formData = new FormData();
+    formData.append("name", nomSain);
+    formData.append("email", emailSain);
+    formData.append("subject", objetSain);
+    formData.append("message", messageSain);
+    formData.append("_subject", `Portfolio [${nomSain}]: ${objetSain}`);
 
     try {
       const response = await fetch(formulaire.action, {
@@ -513,7 +593,8 @@ function initialiser_formulaire() {
       });
 
       if (response.ok) {
-        btn_envoyer.innerHTML = "✅ Envoyé !";
+        dernierEnvoi = Date.now();
+        btn_envoyer.innerHTML = "✅ Message envoyé !";
         btn_envoyer.style.background =
           "linear-gradient(135deg,#22C55E,#16A34A)";
         msg_succes?.classList.add("visible");
@@ -531,17 +612,17 @@ function initialiser_formulaire() {
         }, 5000);
       } else {
         const data = await response.json();
-        throw new Error(data.error || "Erreur d'envoi");
+        throw new Error(data?.error || "Erreur lors de l'envoi");
       }
     } catch (error) {
-      console.error("Erreur:", error);
+      console.error("Erreur formulaire:", error);
+      btn_envoyer.disabled = false;
       btn_envoyer.innerHTML = "❌ Erreur, réessayez";
-      msg_error?.classList.add("visible");
-      setTimeout(() => {
-        btn_envoyer.disabled = false;
-        btn_envoyer.innerHTML = `Envoyer le message`;
-        msg_error?.classList.remove("visible");
-      }, 4000);
+      if (msg_error) {
+        msg_error.textContent = "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
+        msg_error.classList.add("visible");
+        setTimeout(() => msg_error.classList.remove("visible"), 4000);
+      }
     }
   });
 }
@@ -578,11 +659,7 @@ function initialiser_systeme_solaire_3d() {
     let r2 = 160;
     let r3 = 220;
 
-    if (w <= 360) {
-      r1 = 50;
-      r2 = 77;
-      r3 = 107;
-    } else if (w <= 480) {
+    if (w <= 480) {
       r1 = 57;
       r2 = 87;
       r3 = 120;
@@ -903,6 +980,36 @@ function initialiser_modal_certificats() {
   });
 }
 
+// Animations complémentaires assistées par Anime.js
+function initialiser_animations_animejs() {
+  if (!window.anime || typeof window.anime.animate !== "function") return;
+
+  // 1. Satellites orbitaux de la section À Propos
+  const satellites = document.querySelectorAll(".orbit_satellite");
+  if (satellites.length) {
+    window.anime.animate(satellites, {
+      scale: [0.85, 1.3, 0.85],
+      opacity: [0.45, 1, 0.45],
+      delay: window.anime.stagger(350),
+      duration: 2800,
+      loop: true,
+      ease: "inOutSine",
+    });
+  }
+
+  // 2. Anneau photo orbitale : respiration subtile
+  const photoRing = document.querySelector(".orbit_ring_main");
+  if (photoRing) {
+    window.anime.animate(photoRing, {
+      scale: [1, 1.04, 1],
+      opacity: [0.3, 0.6, 0.3],
+      duration: 3800,
+      loop: true,
+      ease: "inOutQuad",
+    });
+  }
+}
+
 // Démarrage sécurisé au chargement
 function demarrerApplication() {
   initialiser_filtres_competences();
@@ -911,6 +1018,7 @@ function demarrerApplication() {
   initialiser_formulaire();
   initialiser_systeme_solaire_3d();
   initialiser_modal_certificats();
+  initialiser_animations_animejs();
 }
 
 if (document.readyState === "loading") {
