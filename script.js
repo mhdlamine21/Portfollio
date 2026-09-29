@@ -1097,3 +1097,113 @@ certFilterBtns.forEach((btn) => {
     });
   });
 });
+
+/* ══════════════════════════════════════════════════════
+   CAROUSEL PROJETS — 6 par page (desktop) / scroll natif (mobile)
+══════════════════════════════════════════════════════ */
+(function () {
+  var grille = document.getElementById("grille_projets");
+  var btnPrev = document.getElementById("btn_prev");
+  var btnNext = document.getElementById("btn_next");
+  var pagesContainer = document.getElementById("carousel_pages");
+
+  if (!grille || !btnPrev || !btnNext || !pagesContainer) return;
+
+  var PAR_PAGE = 6;
+  var page = 0;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function cartes() { return Array.from(grille.querySelectorAll(".carte_projet")); }
+
+  function nbPages() { return Math.ceil(cartes().length / PAR_PAGE); }
+
+  function allerPage(p, dir) {
+    if (isMobile()) return;
+    var total = nbPages();
+    if (p < 0 || p >= total) return;
+
+    grille.style.transition = "opacity 0.28s ease, transform 0.28s ease";
+    grille.style.opacity = "0";
+    grille.style.transform = dir === "next" ? "translateX(-28px)" : "translateX(28px)";
+
+    setTimeout(function () {
+      cartes().forEach(function (c, i) {
+        var debut = p * PAR_PAGE;
+        if (i >= debut && i < debut + PAR_PAGE) {
+          c.classList.remove("masquee");
+        } else {
+          c.classList.add("masquee");
+        }
+      });
+
+      page = p;
+      btnPrev.disabled = page === 0;
+      btnNext.disabled = page === total - 1;
+
+      pagesContainer.querySelectorAll(".page_indicateur").forEach(function (b, i) {
+        b.classList.toggle("actif", i === page);
+      });
+
+      grille.style.transition = "none";
+      grille.style.transform = dir === "next" ? "translateX(28px)" : "translateX(-28px)";
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          grille.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+          grille.style.opacity = "1";
+          grille.style.transform = "translateX(0)";
+        });
+      });
+    }, 280);
+  }
+
+  function buildIndicateurs() {
+    var total = nbPages();
+    pagesContainer.innerHTML = "";
+    for (var i = 0; i < total; i++) {
+      (function (idx) {
+        var btn = document.createElement("button");
+        btn.className = "page_indicateur" + (idx === 0 ? " actif" : "");
+        btn.textContent = idx + 1;
+        btn.setAttribute("aria-label", "Page " + (idx + 1));
+        btn.addEventListener("click", function () {
+          allerPage(idx, idx > page ? "next" : "prev");
+        });
+        pagesContainer.appendChild(btn);
+      })(i);
+    }
+  }
+
+  function init() {
+    if (isMobile()) {
+      cartes().forEach(function (c) { c.classList.remove("masquee"); });
+      pagesContainer.innerHTML = "";
+      grille.style.cssText = "";
+      return;
+    }
+    buildIndicateurs();
+    cartes().forEach(function (c, i) {
+      if (i < PAR_PAGE) { c.classList.remove("masquee"); }
+      else { c.classList.add("masquee"); }
+    });
+    btnPrev.disabled = true;
+    btnNext.disabled = nbPages() <= 1;
+    grille.style.opacity = "1";
+    grille.style.transform = "translateX(0)";
+  }
+
+  btnNext.addEventListener("click", function () { allerPage(page + 1, "next"); });
+  btnPrev.addEventListener("click", function () { allerPage(page - 1, "prev"); });
+
+  var wasMobile = isMobile();
+  window.addEventListener("resize", function () {
+    var mobile = isMobile();
+    if (mobile !== wasMobile) {
+      wasMobile = mobile;
+      page = 0;
+      init();
+    }
+  });
+
+  init();
+})();

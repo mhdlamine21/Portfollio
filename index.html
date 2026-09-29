@@ -1360,7 +1360,8 @@
             <h2>Projets <span class="accent_titre">réalisés</span></h2>
           </div>
 
-          <div class="grille_projets" id="grille_projets">
+          <div class="carousel_projets_wrapper" id="carousel_projets_wrapper">
+            <div class="grille_projets" id="grille_projets">
             <article class="carte_projet projet_deux reveler">
               <div class="barre_projet"></div>
               <div class="projet_entete">
@@ -1686,6 +1687,18 @@
 
 
           </div>
+          <!-- NAVIGATION CAROUSEL -->
+          <nav class="carousel_nav" id="carousel_nav" aria-label="Navigation projets">
+            <button class="carousel_btn" id="btn_prev" aria-label="Page précédente" disabled>
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="carousel_pages" id="carousel_pages"></div>
+            <button class="carousel_btn" id="btn_next" aria-label="Page suivante">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </nav>
+
+          </div><!-- fin carousel_projets_wrapper -->
 
           <div class="voir_tout reveler">
             <a
