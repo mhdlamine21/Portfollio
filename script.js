@@ -659,9 +659,13 @@ function initialiser_systeme_solaire_3d() {
     let r2 = 160;
     let r3 = 220;
 
-    if (w <= 480) {
-      r1 = 57;
-      r2 = 87;
+    if (w <= 380) {
+      r1 = 45;
+      r2 = 70;
+      r3 = 97.5;
+    } else if (w <= 480) {
+      r1 = 57.5;
+      r2 = 87.5;
       r3 = 120;
     } else if (w <= 768) {
       r1 = 70;
