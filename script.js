@@ -176,7 +176,7 @@ const obs_stats = new IntersectionObserver(
             compteur = cible;
             clearInterval(chrono);
           }
-          el.textContent = compteur + "+";
+          el.textContent = compteur;
         }, 40);
       });
       obs_stats.unobserve(e.target);
